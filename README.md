@@ -1,1 +1,1 @@
-# prismic-astro-deck
+# Paper Plan Olympics

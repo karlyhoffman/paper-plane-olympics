@@ -1,0 +1,16 @@
+@use "./variables/colors" as colors;
+
+@import "./base/reset";
+@import "./base/utilities";
+@import "./base/typography";
+
+html {
+  background-color: colors.$white;
+  color: colors.$black;
+  font-size: 100%;
+}
+
+body {
+  min-height: 100vh;
+  @include text-regular;
+}

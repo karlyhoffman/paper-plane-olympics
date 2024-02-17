@@ -1,0 +1,10 @@
+---
+import PrismicHtml from '../components/PrismicHtml.astro';
+import '../styles/components/footer.scss';
+
+const { description } = Astro.props;
+---
+
+<footer>
+  <PrismicHtml html={description} />
+</footer>

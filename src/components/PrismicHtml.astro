@@ -1,0 +1,10 @@
+---
+import { asHTML } from '@prismicio/client';
+
+const { html } = Astro.props;
+const content = asHTML(html) || '';
+---
+
+{!!content.length && (
+  <Fragment set:html={content} />
+)}

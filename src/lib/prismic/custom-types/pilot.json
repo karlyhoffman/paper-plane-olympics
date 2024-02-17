@@ -1,0 +1,49 @@
+{
+  "Overview": {
+    "name": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading2",
+        "label": "Name",
+        "placeholder": "First Lastname"
+      }
+    },
+    "avatar": {
+      "type": "Image",
+      "config": {
+        "constraint": {
+          "width": 700,
+          "height": 700
+        },
+        "thumbnails": [],
+        "label": "Avatar"
+      }
+    },
+    "about_blurb": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph,strong,em,hyperlink,list-item,o-list-item",
+        "allowTargetBlank": true,
+        "label": "About Blurb",
+        "placeholder": "Likes long walks on the beach when not flying paper planes..."
+      }
+    },
+    "planes": {
+      "type": "Group",
+      "config": {
+        "fields": {
+          "plane": {
+            "type": "Link",
+            "config": {
+              "select": "document",
+              "customtypes": ["plane"],
+              "label": "Plane",
+              "placeholder": "Select a plane"
+            }
+          }
+        },
+        "label": "Planes"
+      }
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "Overview": {
+    "name": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading3",
+        "label": "Name of the Plane",
+        "placeholder": "Ex. \"Plane Jane\" or \"Plane-y McPlaneface\""
+      }
+    },
+    "uid": {
+      "type": "UID",
+      "config": {
+        "label": "Slug Name",
+        "placeholder": "write-the-slug-name-here"
+      }
+    },
+    "event": {
+      "type": "Link",
+      "config": {
+        "select": "document",
+        "customtypes": ["event"],
+        "label": "Event",
+        "placeholder": "Select the event this plane will compete in"
+      }
+    },
+    "photo": {
+      "type": "Image",
+      "config": {
+        "constraint": {
+          "width": 1400,
+          "height": 840
+        },
+        "thumbnails": [
+          {
+            "name": "mobile",
+            "width": 768,
+            "height": 896
+          }
+        ],
+        "label": "Photo"
+      }
+    }
+  }
+}

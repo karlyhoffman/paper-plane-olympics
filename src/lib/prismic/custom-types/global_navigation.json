@@ -1,0 +1,14 @@
+{
+  "Nav Menu": {},
+  "Footer": {
+    "footer_desc": {
+      "type": "StructuredText",
+      "config": {
+        "single": "paragraph,strong,em,hyperlink",
+        "allowTargetBlank": true,
+        "label": "Short Description",
+        "placeholder": "Write a short footer blurb here."
+      }
+    }
+  }
+}

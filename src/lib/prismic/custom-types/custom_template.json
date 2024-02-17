@@ -1,0 +1,317 @@
+{
+  "Overview": {
+    "page_title": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1",
+        "label": "Page Title"
+      }
+    },
+    "uid": {
+      "type": "UID",
+      "config": {
+        "label": "Slug",
+        "placeholder": "write-the-page-slug-here"
+      }
+    },
+    "slices_hero": {
+      "type": "Slices",
+      "fieldset": "Slice zone",
+      "config": {
+        "labels": null,
+        "choices": {
+          "hero_simple": {
+            "type": "Slice",
+            "fieldset": "Hero (Simple)",
+            "description": "Headline with Blurb",
+            "icon": "aspect_ratio",
+            "display": "list",
+            "non-repeat": {
+              "headline": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading2",
+                  "label": "Headline",
+                  "placeholder": "Write the headline here."
+                }
+              },
+              "description": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph,strong,em,hyperlink,list-item,o-list-item",
+                  "allowTargetBlank": true,
+                  "label": "Description",
+                  "placeholder": "This text will appear below the headline."
+                }
+              }
+            },
+            "repeat": {}
+          },
+          "hero_image": {
+            "type": "Slice",
+            "fieldset": "Hero (Image)",
+            "description": "Headline with Image or Animation",
+            "icon": "movie_filter",
+            "display": "list",
+            "non-repeat": {
+              "headline": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading2",
+                  "label": "Headline",
+                  "placeholder": "Write the headline here."
+                }
+              },
+              "bg_overlay": {
+                "type": "Boolean",
+                "config": {
+                  "placeholder_false": "Hide",
+                  "placeholder_true": "Show",
+                  "default_value": false,
+                  "label": "Background Overlay"
+                }
+              },
+              "background_image": {
+                "type": "Image",
+                "config": {
+                  "constraint": {},
+                  "thumbnails": [],
+                  "label": "Background Image"
+                }
+              }
+            },
+            "repeat": {}
+          }
+        }
+      }
+    }
+  },
+  "Body": {
+    "slices_body": {
+      "type": "Slices",
+      "fieldset": "Slice zone",
+      "config": {
+        "labels": null,
+        "choices": {
+          "text": {
+            "type": "Slice",
+            "fieldset": "Text",
+            "description": "Rich text editor for long-form text.",
+            "icon": "text_fields",
+            "display": "list",
+            "non-repeat": {
+              "headline": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading2",
+                  "label": "Headline",
+                  "placeholder": "Write the headline here."
+                }
+              },
+              "text": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item",
+                  "allowTargetBlank": true,
+                  "label": "Text",
+                  "placeholder": "Write the text here."
+                }
+              }
+            },
+            "repeat": {}
+          },
+          "text_with_image": {
+            "type": "Slice",
+            "fieldset": "Text with Image",
+            "description": "Split text and image section.",
+            "icon": "art_track",
+            "display": "list",
+            "non-repeat": {
+              "headline": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading2",
+                  "label": "Headline",
+                  "placeholder": "Write the headline here."
+                }
+              },
+              "description": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph,strong,em,hyperlink,list-item,o-list-item",
+                  "allowTargetBlank": true,
+                  "label": "Description",
+                  "placeholder": "This text will appear below the headline."
+                }
+              },
+              "align_image": {
+                "type": "Boolean",
+                "config": {
+                  "placeholder_false": "Left",
+                  "placeholder_true": "Right",
+                  "default_value": true,
+                  "label": "Align Image"
+                }
+              },
+              "image": {
+                "type": "Image",
+                "config": {
+                  "constraint": {},
+                  "thumbnails": [],
+                  "label": "Image"
+                }
+              }
+            },
+            "repeat": {}
+          },
+          "image": {
+            "type": "Slice",
+            "fieldset": "Full-width Image",
+            "description": "A large image option.",
+            "icon": "image",
+            "display": "list",
+            "non-repeat": {
+              "image": {
+                "type": "Image",
+                "config": {
+                  "constraint": {},
+                  "thumbnails": [],
+                  "label": "Image"
+                }
+              }
+            },
+            "repeat": {}
+          },
+          "events_index": {
+            "type": "Slice",
+            "fieldset": "Events Index",
+            "description": "An automatically generated list of all events.",
+            "icon": "assignment",
+            "display": "list",
+            "non-repeat": {
+              "headline": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading2",
+                  "label": "Headline",
+                  "placeholder": "Write the headline here."
+                }
+              },
+              "description": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph,strong,em,hyperlink",
+                  "allowTargetBlank": true,
+                  "label": "Description",
+                  "placeholder": "Write a short description here."
+                }
+              }
+            },
+            "repeat": {}
+          },
+          "planes_index": {
+            "type": "Slice",
+            "fieldset": "Planes Index",
+            "description": "A curated list of planes.",
+            "icon": "airplanemode_active",
+            "display": "list",
+            "non-repeat": {
+              "headline": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading2",
+                  "label": "Headline",
+                  "placeholder": "Write the headline here."
+                }
+              },
+              "description": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph,strong,em,hyperlink",
+                  "allowTargetBlank": true,
+                  "label": "Description",
+                  "placeholder": "Write a short description here."
+                }
+              }
+            },
+            "repeat": {
+              "plane": {
+                "type": "Link",
+                "config": {
+                  "select": "document",
+                  "customtypes": ["plane"],
+                  "label": "Plane",
+                  "placeholder": "Select a plane"
+                }
+              }
+            }
+          },
+          "cta": {
+            "type": "Slice",
+            "fieldset": "CTA",
+            "description": "Text section with a featured link.",
+            "icon": "insert_link",
+            "display": "list",
+            "non-repeat": {
+              "headline": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading2",
+                  "label": "Headline",
+                  "placeholder": "Write the headline here."
+                }
+              },
+              "description": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph,strong,em,hyperlink",
+                  "allowTargetBlank": true,
+                  "label": "Description",
+                  "placeholder": "Write a short description here."
+                }
+              },
+              "featured_link": {
+                "type": "Link",
+                "config": {
+                  "allowTargetBlank": true,
+                  "label": "Featured Link",
+                  "placeholder": "Select a link",
+                  "select": null
+                }
+              }
+            },
+            "repeat": {}
+          }
+        }
+      }
+    }
+  },
+  "SEO": {
+    "seo_image": {
+      "type": "Image",
+      "config": {
+        "constraint": {
+          "width": 1200,
+          "height": 675
+        },
+        "thumbnails": [],
+        "label": "SEO Image"
+      }
+    },
+    "seo_title": {
+      "type": "Text",
+      "config": {
+        "label": "SEO Title",
+        "placeholder": "Write the SEO page title here."
+      }
+    },
+    "seo_desc": {
+      "type": "StructuredText",
+      "config": {
+        "single": "paragraph",
+        "label": "SEO Description",
+        "placeholder": "Write the SEO page description here."
+      }
+    }
+  }
+}

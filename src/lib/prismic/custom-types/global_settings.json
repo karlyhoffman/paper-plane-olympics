@@ -1,0 +1,38 @@
+{
+  "Theme": {
+    "theme_secondary_color": {
+      "type": "Color",
+      "config": {
+        "label": "Secondary Theme Color"
+      }
+    }
+  },
+  "SEO": {
+    "seo_default_image": {
+      "type": "Image",
+      "config": {
+        "constraint": {
+          "width": 1200,
+          "height": 675
+        },
+        "thumbnails": [],
+        "label": "Default SEO Image"
+      }
+    },
+    "seo_default_title": {
+      "type": "Text",
+      "config": {
+        "label": "Default Title",
+        "placeholder": "Write the default page title here."
+      }
+    },
+    "seo_default_desc": {
+      "type": "StructuredText",
+      "config": {
+        "single": "paragraph",
+        "label": "Default Description",
+        "placeholder": "Write the default page description here."
+      }
+    }
+  }
+}

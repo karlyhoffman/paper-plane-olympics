@@ -1,0 +1,65 @@
+{
+  "Overview": {
+    "event_name": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading2",
+        "label": "Event Name",
+        "placeholder": "Event Name"
+      }
+    },
+    "uid": {
+      "type": "UID",
+      "config": {
+        "label": "Slug Name",
+        "placeholder": "write-the-slug-name-here"
+      }
+    },
+    "description": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph,strong,em,hyperlink,list-item,o-list-item",
+        "allowTargetBlank": true,
+        "label": "Description",
+        "placeholder": "Write a description of the event here."
+      }
+    }
+  },
+  "Winners": {
+    "winner_gold": {
+      "type": "Link",
+      "config": {
+        "select": "document",
+        "customtypes": ["plane"],
+        "label": "Gold",
+        "placeholder": "Select the first place plane."
+      }
+    },
+    "winner_silver": {
+      "type": "Link",
+      "config": {
+        "select": "document",
+        "customtypes": ["plane"],
+        "label": "Silver",
+        "placeholder": "Select the second place plane."
+      }
+    },
+    "winner_bronze": {
+      "type": "Link",
+      "config": {
+        "select": "document",
+        "customtypes": ["plane"],
+        "label": "Bronze",
+        "placeholder": "Select the third place plane."
+      }
+    },
+    "winner_honorable_mention": {
+      "type": "Link",
+      "config": {
+        "select": "document",
+        "customtypes": ["plane"],
+        "label": "Honorable Mention"
+      }
+    }
+  }
+}

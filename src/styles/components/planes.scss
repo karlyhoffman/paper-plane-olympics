@@ -2,10 +2,17 @@
 
 .plane {
   position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 122px;
+  height: 112px;
 
   @for $i from 1 through 12 {
     &--#{$i}-oclock {
       offset-path: map-get($flight-paths, $i);
+      transform: map-get($transform, $i);
       animation: move 4s infinite linear;
     }
   }

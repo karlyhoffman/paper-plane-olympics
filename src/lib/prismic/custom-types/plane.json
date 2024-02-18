@@ -15,6 +15,15 @@
         "placeholder": "write-the-slug-name-here"
       }
     },
+    "pilot": {
+      "type": "Link",
+      "config": {
+        "select": "document",
+        "customtypes": ["pilot"],
+        "label": "Pilot",
+        "placeholder": "Select the pilot"
+      }
+    },
     "event": {
       "type": "Link",
       "config": {

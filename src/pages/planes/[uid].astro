@@ -1,0 +1,60 @@
+---
+import { asText } from "@prismicio/client";
+import { Image } from 'astro:assets';
+import { fetchDocumentsByType } from '../../lib/prismic/queries';
+import Layout from "../../layouts/Layout.astro";
+
+export async function getStaticPaths() {
+  const results = await fetchDocumentsByType({ type: "plane", options: {
+    fetchLinks: ['event.event_name', 'pilot.name', 'pilot.avatar'],
+  } }) || [];
+
+  return results.map(({ uid, data }) => ({
+    params: { uid },
+    props: { ...data }
+  }));
+}
+
+const {
+  name,
+  event,
+  photo,
+  pilot
+} = Astro.props;
+
+const planePhoto = photo?.url ? photo : null;
+
+const pilotPhoto = pilot.data.avatar?.url
+  ? pilot.data.avatar
+  : null;
+---
+
+<Layout>
+  <h1>{asText(name)}</h1>
+
+  {planePhoto && (
+    <Image
+      src={planePhoto.url}
+      width={1400}
+      height={840}
+      alt={planePhoto.alt || ''}
+    />
+  )}
+
+  <p>
+    <strong>Event:</strong> {asText(event.data.event_name)}
+  </p>
+
+  <p>
+    <strong>Pilot:</strong> {asText(pilot.data.name)}
+
+    {pilotPhoto && (
+      <Image
+        src={pilotPhoto.url}
+        width={150}
+        height={150}
+        alt={pilotPhoto.alt || ''}
+      />
+    )}
+  </p>
+</Layout>

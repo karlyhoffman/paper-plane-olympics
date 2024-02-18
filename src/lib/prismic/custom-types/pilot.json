@@ -27,23 +27,6 @@
         "label": "About Blurb",
         "placeholder": "Likes long walks on the beach when not flying paper planes..."
       }
-    },
-    "planes": {
-      "type": "Group",
-      "config": {
-        "fields": {
-          "plane": {
-            "type": "Link",
-            "config": {
-              "select": "document",
-              "customtypes": ["plane"],
-              "label": "Plane",
-              "placeholder": "Select a plane"
-            }
-          }
-        },
-        "label": "Planes"
-      }
     }
   }
 }

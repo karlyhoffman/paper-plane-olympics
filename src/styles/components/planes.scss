@@ -13,7 +13,7 @@
     &--#{$i}-oclock {
       offset-path: map-get($flight-paths, $i);
       transform: map-get($transform, $i);
-      animation: move 4s infinite linear;
+      animation: move 5s ease-in-out infinite;
     }
   }
 }

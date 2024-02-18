@@ -7,9 +7,11 @@ const { text } = Astro.props;
 ---
 
 <section class="title-card">
-  <Planes showPlaneNumbers={[12, 1, 2, 4, 7, 9, 11]} />
-
   <div class="title-card__content">
     <PrismicHtml html={text} />
+  </div>
+
+  <div class="title-card__planes">
+    <Planes showPlaneNumbers={[12, 1, 2, 4, 7, 9, 11]} />
   </div>
 </section>

@@ -1,10 +1,22 @@
 ---
 import Footer from '../components/Footer.astro';
+import SEO from '../components/SEO.astro';
 import { fetchSingleDocumentByType } from "../lib/prismic/queries";
 import '../styles/global.scss';
 
-const { title = 'Paper Plane Olympics' } = Astro.props;
-const { data } = await fetchSingleDocumentByType({ type: "global_navigation" }) || {};
+const { data: pageData } = await fetchSingleDocumentByType({ type: "global_settings" }) || {};
+const { data: footerData } = await fetchSingleDocumentByType({ type: "global_navigation" }) || {};
+
+const { title, seoImage, seoDesc } = Astro.props;
+
+const {
+	seo_default_title: pageDefaultTitle,
+	seo_default_desc: seoDefaultDesc,
+	seo_default_image: seoDefaultImage,
+	theme_secondary_color: secondaryColor
+} = pageData;
+
+const { footer_desc: footerDesc } = footerData;
 ---
 
 <!doctype html>
@@ -15,12 +27,17 @@ const { data } = await fetchSingleDocumentByType({ type: "global_navigation" }) 
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
+
+		<SEO
+			title={title || pageDefaultTitle || 'Paper Plane Olympics'}
+			description={seoDesc || seoDefaultDesc}
+			image={seoImage || seoDefaultImage}
+		/>
 	</head>
 	<body>
 		<main>
 			<slot />
 		</main>
-		<Footer description={data?.footer_desc} />
+		<Footer description={footerDesc} />
 	</body>
 </html>

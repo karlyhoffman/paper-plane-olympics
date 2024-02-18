@@ -1,0 +1,32 @@
+---
+import { asText } from "@prismicio/client";
+import { fetchDocumentsByType } from '../lib/prismic/queries';
+import Layout from "../layouts/Layout.astro";
+
+export async function getStaticPaths() {
+  const results = await fetchDocumentsByType({ type: "custom_template" }) || [];
+
+  return results.map(({ uid, data }) => ({
+    params: { uid },
+    props: { ...data }
+  }));
+}
+
+const {
+  page_title,
+  slices_hero = [],
+  slices_body = [],
+  seo_title,
+  seo_image,
+  seo_desc,
+} = Astro.props;
+
+---
+
+<Layout
+  title={seo_title}
+  seoImage={seo_image}
+  seoDesc={seo_desc}
+>
+  <h1>{asText(page_title)}</h1>
+</Layout>

@@ -1,0 +1,28 @@
+---
+import { Image } from 'astro:assets';
+import plane11 from '../../public/images/planes/plane-11-oclock.svg';
+import '../styles/components/planes.scss';
+
+const PLANE_ASSETS = {
+  1: plane11,
+  2: plane11,
+  4: plane11,
+  7: plane11,
+  9: plane11,
+  11: plane11,
+  12: plane11
+};
+
+const { showPlaneNumbers = [] } = Astro.props;
+---
+
+{showPlaneNumbers.map((num) => (
+  <div class={`plane plane--${num}-oclock`}>
+    <Image
+      src={PLANE_ASSETS[num]}
+      width={122}
+      height={112}
+      alt="a paper airplane graphic"
+    />
+  </div>
+))

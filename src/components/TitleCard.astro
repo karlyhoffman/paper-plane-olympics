@@ -1,11 +1,15 @@
 ---
 import PrismicHtml from '../components/PrismicHtml.astro';
+import Planes from '../components/Planes.astro';
 import '../styles/components/title-card.scss';
 
 const { text } = Astro.props;
 ---
 
 <section class="title-card">
+  <div class="title-card__background">
+    <Planes showPlaneNumbers={[11]} />
+  </div>
   <div class="title-card__content">
     <PrismicHtml html={text} />
   </div>

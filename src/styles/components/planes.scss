@@ -1,0 +1,22 @@
+@use "../variables/flight-paths" as *;
+
+.plane {
+  position: absolute;
+
+  @for $i from 1 through 12 {
+    &--#{$i}-oclock {
+      offset-path: map-get($flight-paths, $i);
+      animation: move 4s infinite linear;
+    }
+  }
+}
+
+@keyframes move {
+  0% {
+    offset-distance: 0%;
+  }
+
+  100% {
+    offset-distance: 100%;
+  }
+}

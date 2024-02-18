@@ -1,0 +1,12 @@
+---
+import PrismicHtml from '../components/PrismicHtml.astro';
+import '../styles/components/title-card.scss';
+
+const { text } = Astro.props;
+---
+
+<section class="title-card">
+  <div class="title-card__content">
+    <PrismicHtml html={text} />
+  </div>
+</section>

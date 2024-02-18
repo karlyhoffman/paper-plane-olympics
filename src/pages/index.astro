@@ -1,13 +1,26 @@
 ---
-import Layout from "../layouts/Layout.astro";
 import { fetchSingleDocumentByType } from "../lib/prismic/queries";
+import TitleCard from "../components/TitleCard.astro";
+import Layout from "../layouts/Layout.astro";
 
 const { data } = await fetchSingleDocumentByType({ type: "homepage" }) || {};
+
+const {
+	title_cards = [],
+	events_headline,
+	featured_events = [],
+	how_headline,
+	instructions = [],
+	event_data,
+	results_headline,
+	results_desc
+} = data;
 ---
 
 <Layout>
-	<h1>Welcome to Astro</h1>
-	<p>
-		This is a simple example of an Astro and Prismic site.
-	</p>
+	<h1 class="sr-only">Paper Plane Olymics</h1>
+	
+	{title_cards.map(({ rich_text }) => (
+		<TitleCard text={rich_text} />
+	))}
 </Layout>

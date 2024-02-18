@@ -1,7 +1,7 @@
 ---
+import { fetchSingleDocumentByType } from "../lib/prismic/queries";
 import Footer from '../components/Footer.astro';
 import SEO from '../components/SEO.astro';
-import { fetchSingleDocumentByType } from "../lib/prismic/queries";
 import '../styles/global.scss';
 
 const { data: pageData } = await fetchSingleDocumentByType({ type: "global_settings" }) || {};

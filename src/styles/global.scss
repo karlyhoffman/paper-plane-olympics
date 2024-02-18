@@ -4,9 +4,14 @@
 @import "./base/utilities";
 @import "./base/typography";
 
+:root {
+  --color-white: #{colors.$white};
+  --color-black: #{colors.$black};
+}
+
 html {
-  background-color: colors.$white;
-  color: colors.$black;
+  background-color: var(--color-white);
+  color: var(--color-black);
   font-size: 100%;
 }
 

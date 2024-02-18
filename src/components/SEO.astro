@@ -2,22 +2,26 @@
 import { asText } from "@prismicio/client";
 
 const { title, description, image } = Astro.props;
+const currentURL = Astro.url.href;
 ---
 
 <title>{title}</title>
 <meta property="og:title" content={title} />
 <meta name="twitter:title" content={title} />
 
+<meta name="twitter:url" content={currentURL}>
 <meta name="twitter:card" content="summary_large_image" />
+
+<meta property="og:url" content={currentURL}>
 <meta property="og:type" content="website" />
 
 {description && (
   <meta name="description" content={asText(description)} />
-  <meta property="og:description" content={asText(description)} />
   <meta name="twitter:description" content={asText(description)} />
+  <meta property="og:description" content={asText(description)} />
 )}
 
 {image?.url && (
-  <meta property="og:image" content={image.url} />
   <meta name="twitter:image" content={image.url} />
+  <meta property="og:image" content={image.url} />
 )}

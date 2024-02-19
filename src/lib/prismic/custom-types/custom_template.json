@@ -241,7 +241,7 @@
                   "select": "document",
                   "customtypes": ["plane"],
                   "label": "Plane",
-                  "placeholder": "Select a plane"
+                  "placeholder": " a plane"
                 }
               }
             }

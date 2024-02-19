@@ -32,7 +32,7 @@
         "select": "document",
         "customtypes": ["plane"],
         "label": "Gold",
-        "placeholder": "Select the first place plane."
+        "placeholder": "Select the first place plane"
       }
     },
     "winner_silver": {
@@ -41,7 +41,7 @@
         "select": "document",
         "customtypes": ["plane"],
         "label": "Silver",
-        "placeholder": "Select the second place plane."
+        "placeholder": "Select the second place plane"
       }
     },
     "winner_bronze": {
@@ -50,7 +50,7 @@
         "select": "document",
         "customtypes": ["plane"],
         "label": "Bronze",
-        "placeholder": "Select the third place plane."
+        "placeholder": "Select the third place plane"
       }
     },
     "winner_honorable_mention": {
@@ -58,7 +58,8 @@
       "config": {
         "select": "document",
         "customtypes": ["plane"],
-        "label": "Honorable Mention"
+        "label": "Honorable Mention",
+        "placeholder": "Select an honorable mention"
       }
     }
   }

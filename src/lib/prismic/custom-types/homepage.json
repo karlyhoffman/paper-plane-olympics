@@ -14,15 +14,32 @@
               "labels": ["Small"]
             }
           },
-          "animation_path": {
-            "type": "StructuredText",
+          "animation_type": {
+            "type": "Select",
             "config": {
-              "single": "preformatted",
-              "label": "SVG Animation Path (Optional)"
+              "options": ["None", "Clouds", "Planes"],
+              "default_value": "None",
+              "label": "Animation",
+              "placeholder": "Select an animation..."
             }
           }
         },
         "label": "Title Cards"
+      }
+    },
+    "event_date_headline": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph, heading2, strong, em, hyperlink",
+        "allowTargetBlank": true,
+        "label": "Event Date Headline",
+        "placeholder": "Write the headline for the date section here."
+      }
+    },
+    "event_date": {
+      "type": "Timestamp",
+      "config": {
+        "label": "Event Date"
       }
     }
   },
@@ -77,14 +94,6 @@
           }
         },
         "label": "Instructions"
-      }
-    }
-  },
-  "Date": {
-    "event_date": {
-      "type": "Timestamp",
-      "config": {
-        "label": "Event Date"
       }
     }
   },

@@ -22,7 +22,8 @@ const {
 <Layout>
 	<h1 class="sr-only">Paper Plane Olymics</h1>
 	
-	{title_cards.map(({ rich_text }) => (
-		<TitleCard text={rich_text} />
+	{title_cards.map(({ rich_text }, i) => (
+		// Temp: show planes on first card
+		<TitleCard text={rich_text} showPlanes={i === 0} />
 	))}
 </Layout>

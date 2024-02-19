@@ -1,13 +1,12 @@
 ---
-import { fetchSingleDocumentByType } from "../lib/prismic/queries";
-import Footer from '../components/Footer.astro';
-import SEO from '../components/SEO.astro';
+import { fetchSingleDocumentByType } from '../lib/prismic/queries';
+import { Footer, SEO } from '../components';
 import '../styles/global.scss';
 
-const { data: pageData } = await fetchSingleDocumentByType({ type: "global_settings" }) || {};
-const { data: footerData } = await fetchSingleDocumentByType({ type: "global_navigation" }) || {};
+const { data: pageData } = await fetchSingleDocumentByType({ type: 'global_settings' }) || {};
+const { data: footerData } = await fetchSingleDocumentByType({ type: 'global_navigation' }) || {};
 
-const { title, seoImage, seoDesc } = Astro.props;
+const { title, seoImage, seoDesc, id, class: className } = Astro.props;
 
 const {
 	seo_default_title: pageDefaultTitle,
@@ -29,13 +28,13 @@ const { footer_desc: footerDesc } = footerData;
 		<meta name="generator" content={Astro.generator} />
 
 		<SEO
-			title={title || pageDefaultTitle || 'Paper Plane Olympics'}
+			title={ title + ' | Paper Plane Olymics' || pageDefaultTitle || 'Paper Plane Olympics'}
 			description={seoDesc || seoDefaultDesc}
 			image={seoImage || seoDefaultImage}
 		/>
 	</head>
 	<body>
-		<main>
+		<main id={id} class={className}>
 			<slot />
 		</main>
 		<Footer description={footerDesc} />

@@ -1,10 +1,10 @@
 ---
-import { asText } from "@prismicio/client";
+import { asText } from '@prismicio/client';
 import { fetchDocumentsByType } from '../lib/prismic/queries';
-import Layout from "../layouts/Layout.astro";
+import Layout from '../layouts/Layout.astro';
 
 export async function getStaticPaths() {
-  const results = await fetchDocumentsByType({ type: "custom_template" }) || [];
+  const results = await fetchDocumentsByType({ type: 'custom_template' }) || [];
 
   return results.map(({ uid, data }) => ({
     params: { uid },

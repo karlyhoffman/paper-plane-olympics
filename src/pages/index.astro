@@ -1,9 +1,26 @@
 ---
-import { fetchSingleDocumentByType } from "../lib/prismic/queries";
-import TitleCard from "../components/TitleCard.astro";
-import Layout from "../layouts/Layout.astro";
+import { asText } from '@prismicio/client';
+import { Image } from 'astro:assets';
+import { PrismicHtml, TitleCard } from '../components';
+import { fetchSingleDocumentByType, fetchRelatedDocumentsByTypeAndIDs } from '../lib/prismic/queries';
+import Layout from '../layouts/Layout.astro';
+import '../styles/pages/homepage.scss';
 
-const { data } = await fetchSingleDocumentByType({ type: "homepage" }) || {};
+const { data } = await fetchSingleDocumentByType({
+	type: 'homepage',
+	options: {
+		fetchLinks: [
+			'event.event_name',
+			'event.uid',
+			'event.description',
+			'event.winner_gold',
+			'event.winner_silver',
+			'event.winner_bronze',
+			'event.winner_honorable_mention',
+			'plane.name'
+		],
+	}
+}) || {};
 
 const {
 	title_cards = [],
@@ -11,19 +28,88 @@ const {
 	featured_events = [],
 	how_headline,
 	instructions = [],
-	event_data,
+  event_date_headline,
+	event_date,
 	results_headline,
 	results_desc
 } = data;
 
-// console.log(title_cards);
+const featuredEventIDs = featured_events.map(({ event }) => event.id) || [];
+
+const eventPlanes = await fetchRelatedDocumentsByTypeAndIDs({
+	type: 'plane',
+  linkedType: 'event',
+	ids: featuredEventIDs,
+	options: {
+		fetchLinks: ['pilot.name'],
+	}
+}) || [];
 ---
 
-<Layout>
+<Layout id="homepage" title="Homepage">
 	<h1 class="sr-only">Paper Plane Olymics</h1>
-	
-	{title_cards.map(({ rich_text }, i) => (
-		// Temp: show planes on first card
-		<TitleCard text={rich_text} showPlanes={i === 0} />
+
+	{title_cards.map(({ rich_text, animation_type }, i) => (
+		<section id={`title-card-${i + 1}`} class="container">
+      <TitleCard
+        text={rich_text}
+        animation={animation_type}
+      />
+    </section>
 	))}
+
+  <section id="date" class="container">
+    <PrismicHtml html={event_date_headline} />
+		<p>{event_date || 'TBD'}</p>
+  </section>
+
+	<section id="events" class="container">
+		<PrismicHtml html={events_headline} />
+		<ul>
+			{featured_events.map(({ event: { id: eventID = "", data } }) => (
+				<li>
+					<h3>{asText(data.event_name)}</h3>
+					<PrismicHtml html={data.description} />
+
+					{!!eventPlanes.length && (
+						<ul>
+							{eventPlanes.map(({ url, data }) => {
+								if (data.event.id !== eventID) return null;
+								// TODO: create plane card component
+								return (
+									<a href={url}>
+										<h4>{asText(data.name)}</h4>
+										{data.photo?.url && (
+											<Image
+												src={data.photo.url}
+												alt={data.photo.alt || ''}
+												width={data.photo.dimensions.width}
+												height={data.photo.dimensions.height}
+											/>
+										)}
+									</a>
+								);
+							})}
+						</ul>
+					)}
+				</li>
+			))}
+		</ul>
+	</section>
+
+	<section id="how-to-enter" class="container">
+		<PrismicHtml html={how_headline} />
+		<ul>
+			{instructions.map(({ step }) => (
+				<li>
+					<PrismicHtml html={step} />
+				</li>
+			))}
+		</ul>
+	</section>
+
+	<section id="results" class="container">
+		<PrismicHtml html={results_headline} />
+		<PrismicHtml html={results_desc} />
+	</section>
 </Layout>

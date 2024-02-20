@@ -5,6 +5,25 @@
       "config": {
         "label": "Secondary Theme Color"
       }
+    },
+    "placeholder_images": {
+      "type": "Image",
+      "config": {
+        "constraint": {},
+        "thumbnails": [
+          {
+            "name": "Plane",
+            "width": 600,
+            "height": 500
+          },
+          {
+            "name": "Pilot",
+            "width": 300,
+            "height": 300
+          }
+        ],
+        "label": "Placeholder Images"
+      }
     }
   },
   "SEO": {

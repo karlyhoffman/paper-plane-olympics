@@ -10,9 +10,18 @@ const { title, seoImage, seoDesc, id, class: className } = Astro.props;
 
 const {
 	seo_default_title: pageDefaultTitle,
-	seo_default_desc: seoDefaultDesc,
-	seo_default_image: seoDefaultImage,
-	theme_secondary_color: secondaryColor
+	seo_default_desc,
+	seo_default_image,
+	theme_secondary_color,
+	placeholder_images: {
+		url: defaultPlaceholderImage = "",
+		Plane: {
+			url: planePlaceholderImage = "",
+		} = {},
+		Pilot: {
+			url: pilotPlaceholderImage = "",
+		} = {},
+	} = {}
 } = pageData;
 
 const { footer_desc: footerDesc } = footerData;
@@ -28,9 +37,9 @@ const { footer_desc: footerDesc } = footerData;
 		<meta name="generator" content={Astro.generator} />
 
 		<SEO
-			title={ title + ' | Paper Plane Olymics' || pageDefaultTitle || 'Paper Plane Olympics'}
-			description={seoDesc || seoDefaultDesc}
-			image={seoImage || seoDefaultImage}
+			title={title + ' | Paper Plane Olymics' || pageDefaultTitle || 'Paper Plane Olympics'}
+			description={seoDesc || seo_default_desc}
+			image={seoImage || seo_default_image}
 		/>
 	</head>
 	<body>
@@ -40,3 +49,12 @@ const { footer_desc: footerDesc } = footerData;
 		<Footer description={footerDesc} />
 	</body>
 </html>
+
+<style 
+	define:vars={{
+		'accent-color': `url('${theme_secondary_color}')`,
+		'fpo-url': `url('${defaultPlaceholderImage}')`,
+		'fpo-plane-url': `url('${planePlaceholderImage}')`,
+		'fpo-pilot-url': `url('${pilotPlaceholderImage}')`,
+	}}
+></style>

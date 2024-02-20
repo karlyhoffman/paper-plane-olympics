@@ -1,7 +1,6 @@
 ---
 import { asText } from '@prismicio/client';
-import { Image } from 'astro:assets';
-import { PrismicHtml, TitleCard } from '../components';
+import { Card, PrismicHtml, TitleCard } from '../components';
 import { fetchSingleDocumentByType, fetchRelatedDocumentsByTypeAndIDs } from '../lib/prismic/queries';
 import Layout from '../layouts/Layout.astro';
 import '../styles/pages/homepage.scss';
@@ -65,35 +64,52 @@ const eventPlanes = await fetchRelatedDocumentsByTypeAndIDs({
 
 	<section id="events" class="container">
 		<PrismicHtml html={events_headline} />
-		<ul>
-			{featured_events.map(({ event: { id: eventID = "", data } }) => (
-				<li>
-					<h3>{asText(data.event_name)}</h3>
-					<PrismicHtml html={data.description} />
+		<ul class="list list--featured-events">
+			{featured_events.map(({ event: { id: eventID = "", data } }) => {
+				const entries = eventPlanes.filter((plane) => plane.data.event.id === eventID);
+				const numOfPlaceholders = 3 - (entries.length % 3);
+				
+				return (
+					<li>
+						<h3>{asText(data.event_name)}</h3>
+						<PrismicHtml html={data.description} />
 
-					{!!eventPlanes.length && (
-						<ul>
-							{eventPlanes.map(({ url, data }) => {
-								if (data.event.id !== eventID) return null;
-								// TODO: create plane card component
+						<ul class="list list--participants">
+							{entries.map(({ url, data: plane }) => {
+
+								const pilot = plane.pilot?.data?.name?.length
+									? asText(plane.pilot.data.name)
+									: 'Mystery Pilot';
+								
 								return (
-									<a href={url}>
-										<h4>{asText(data.name)}</h4>
-										{data.photo?.url && (
-											<Image
-												src={data.photo.url}
-												alt={data.photo.alt || ''}
-												width={data.photo.dimensions.width}
-												height={data.photo.dimensions.height}
-											/>
-										)}
-									</a>
+									<li>
+										<Card
+											url={url}
+											title={asText(plane.name)}
+											subtitle={`Flown by ${pilot}`}
+											photo={plane.photo}
+											titleTag="h4"
+  										subtitleTag="h5"
+										/>	
+									</li>
 								);
 							})}
+
+							{Array.from({ length: numOfPlaceholders }).map(() => (
+								<li>
+									<Card
+										isPlaceholder
+										title="[Plane Name]"
+										subtitle="Flown by [Pilot Name]"
+										titleTag="h4"
+  									subtitleTag="h5"
+									/>	
+								</li>
+							))}
 						</ul>
-					)}
-				</li>
-			))}
+					</li>
+				)
+			})}
 		</ul>
 	</section>
 

@@ -1,3 +1,5 @@
+@use "../variables/breakpoints" as breakpoints;
+
 .sr-only {
   position: absolute;
   width: 1px;
@@ -8,4 +10,20 @@
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border-width: 0;
+}
+
+.mobile-only {
+  display: block;
+
+  @include breakpoints.media-breakpoint-up(md) {
+    display: none;
+  }
+}
+
+.desktop-only {
+  display: none;
+
+  @include breakpoints.media-breakpoint-up(md) {
+    display: block;
+  }
 }

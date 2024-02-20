@@ -1,0 +1,9 @@
+@use "../variables/colors" as colors;
+
+$border: 3px solid colors.$black;
+$border-dashed: 5px dashed colors.$light-gray;
+$border-radius-sm: 8px;
+$border-radius: 15px;
+
+$gutter-sm: 15px;
+$gutter: 30px;

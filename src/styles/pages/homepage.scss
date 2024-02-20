@@ -1,7 +1,39 @@
+@use "../variables/breakpoints" as breakpoints;
+@use "../variables/layout" as layout;
+
 #homepage {
   section {
     position: relative;
     min-height: 100vh;
-    text-align: center;
+
+    &#events {
+
+      .list {
+        padding: 120px 0 330px;
+
+        &--featured-events {
+
+        }
+
+        &--participants {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: layout.$gutter;
+
+          li {
+            flex: 1 1 100%;
+
+            @include breakpoints.media-breakpoint-up(sm) {
+              max-width: calc(50% - layout.$gutter / 2);
+            }
+
+            @include breakpoints.media-breakpoint-up(lg) {
+              max-width: calc(33% - layout.$gutter);
+            }
+          }
+        }
+      }
+    }
   }
 }

@@ -1,0 +1,57 @@
+@use "../variables/breakpoints" as breakpoints;
+@use "../variables/colors" as colors;
+@use "../variables/layout" as layout;
+
+.card {
+
+  &--placeholder {
+    
+    .card__content {
+      position: relative;
+      overflow: hidden;
+      border: layout.$border-dashed;
+
+      .card__content__image {
+        border-color: colors.$light-gray;
+        background-color: colors.$light-gray;
+      }
+    }
+  }
+  
+  &__content {
+    border: layout.$border;
+    border-radius: layout.$border-radius;
+    padding: layout.$gutter-sm;
+
+    &__image {
+      position: relative;
+      overflow: hidden;
+      display: block;
+      border: layout.$border;
+      border-radius: layout.$border-radius-sm;
+      aspect-ratio: 600/500;
+      margin-bottom: layout.$gutter-sm;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    &__title {
+      
+    }
+
+    &__subtitle {
+      
+    }
+  }
+
+  &:not(.card--placeholder) .card__content__image {
+    background-image: var(--fpo-plane-url);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+}

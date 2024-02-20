@@ -1,0 +1,48 @@
+---
+import { Image } from 'astro:assets';
+import '../styles/components/card.scss';
+
+const {
+  url = "/",
+  title = "",
+  subtitle = "",
+  photo,
+  isPlaceholder = false,
+  titleTag = "h2",
+  subtitleTag = "h3",
+} = Astro.props;
+
+const WrapperTag = isPlaceholder ? 'div' : 'a';
+const TitleTag = titleTag;
+const SubtitleTag = subtitleTag;
+---
+
+<WrapperTag
+  href={url}
+  class={`card ${isPlaceholder && ('card--placeholder')}`}
+>
+  <div class="card__content">
+    <div class="card__content__image">
+      {photo?.url && (
+        <Image
+          class={photo.mobile?.url && 'desktop-only'}
+          src={photo.url}
+          alt={photo.alt || ''}
+          width={photo.dimensions.width}
+          height={photo.dimensions.height}
+        />
+      )}
+      {photo?.mobile?.url && (
+        <Image
+          class={photo.url && 'mobile-only'}
+          src={photo.mobile.url}
+          alt={photo.mobile.alt || ''}
+          width={photo.mobile.dimensions.width}
+          height={photo.mobile.dimensions.height}
+        />
+      )}
+    </div>
+    <TitleTag class="card__content__title">{title}</TitleTag>
+    <SubtitleTag class="card__content__subtitle">{subtitle}</SubtitleTag>
+  </div>
+</WrapperTag>

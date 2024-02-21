@@ -1,0 +1,9 @@
+---
+const { condition, elementTag = "div" } = Astro.props;
+const Element = elementTag;
+---
+
+{condition
+  ? <Element><slot /></Element>
+  : <slot />
+}

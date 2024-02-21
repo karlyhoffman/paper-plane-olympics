@@ -3,6 +3,8 @@ import { asHTML } from '@prismicio/client';
 
 const { html } = Astro.props;
 const content = asHTML(html) || '';
+
+// TODO: make external links accessible (add <span class="sr-only">Opens in new tab</span>)
 ---
 
 {!!content.length && (

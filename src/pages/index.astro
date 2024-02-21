@@ -58,7 +58,7 @@ const eventPlanes = await fetchRelatedDocumentsByTypeAndIDs({
 	))}
 
   <section id="date" class="container">
-    <PrismicHtml html={event_date_headline} />
+		<PrismicHtml html={event_date_headline} />
 		<p>{event_date || 'TBD'}</p>
   </section>
 
@@ -68,11 +68,13 @@ const eventPlanes = await fetchRelatedDocumentsByTypeAndIDs({
 			{featured_events.map(({ event: { id: eventID = "", data } }) => {
 				const entries = eventPlanes.filter((plane) => plane.data.event.id === eventID);
 				const numOfPlaceholders = 3 - (entries.length % 3);
-				
+
 				return (
-					<li>
-						<h3>{asText(data.event_name)}</h3>
-						<PrismicHtml html={data.description} />
+					<li class="event">
+						<div class="event__desc container--sm">
+							<h3 class="h4">{asText(data.event_name)}</h3>
+							<PrismicHtml html={data.description} />
+						</div>
 
 						<ul class="list list--participants">
 							{entries.map(({ url, data: plane }) => {
@@ -80,7 +82,7 @@ const eventPlanes = await fetchRelatedDocumentsByTypeAndIDs({
 								const pilot = plane.pilot?.data?.name?.length
 									? asText(plane.pilot.data.name)
 									: 'Mystery Pilot';
-								
+
 								return (
 									<li>
 										<Card
@@ -90,7 +92,7 @@ const eventPlanes = await fetchRelatedDocumentsByTypeAndIDs({
 											photo={plane.photo}
 											titleTag="h4"
   										subtitleTag="h5"
-										/>	
+										/>
 									</li>
 								);
 							})}
@@ -103,7 +105,7 @@ const eventPlanes = await fetchRelatedDocumentsByTypeAndIDs({
 										subtitle="Flown by [Pilot Name]"
 										titleTag="h4"
   									subtitleTag="h5"
-									/>	
+									/>
 								</li>
 							))}
 						</ul>

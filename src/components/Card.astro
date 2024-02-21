@@ -19,7 +19,7 @@ const SubtitleTag = subtitleTag;
 
 <WrapperTag
   href={url}
-  class={`card ${isPlaceholder && ('card--placeholder')}`}
+  class={`card${isPlaceholder ? ' card--placeholder' : ''}`}
 >
   <div class="card__content">
     <div class="card__content__image">
@@ -32,6 +32,7 @@ const SubtitleTag = subtitleTag;
           height={photo.dimensions.height}
         />
       )}
+
       {photo?.mobile?.url && (
         <Image
           class={photo.url && 'mobile-only'}
@@ -42,7 +43,17 @@ const SubtitleTag = subtitleTag;
         />
       )}
     </div>
-    <TitleTag class="card__content__title">{title}</TitleTag>
-    <SubtitleTag class="card__content__subtitle">{subtitle}</SubtitleTag>
+
+    {!!title.length && (
+      <TitleTag class="card__content__title text-regular">
+        {title}
+      </TitleTag>
+    )}
+
+    {!!subtitle.length && (
+      <SubtitleTag class="card__content__subtitle text-regular">
+        {subtitle}
+      </SubtitleTag>
+    )}
   </div>
 </WrapperTag>

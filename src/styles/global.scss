@@ -1,28 +1,12 @@
-@use "./variables/colors" as colors;
-@use "./variables/layout" as layout;
-
 @import "./base/reset";
+
+/* Variables */
+@import "./variables/colors";
+@import "./variables/font-sizes";
+@import "./variables/layout";
+
+/* Base */
 @import "./base/utilities";
+@import "./base/webfonts";
 @import "./base/typography";
-
-:root {
-  --color-white: #{colors.$white};
-  --color-black: #{colors.$black};
-}
-
-html {
-  background-color: var(--color-white);
-  color: var(--color-black);
-  font-size: 100%;
-}
-
-body {
-  min-height: 100vh;
-  @include text-regular;
-}
-
-.container {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 0 layout.$gutter;
-}
+@import "./base/html";

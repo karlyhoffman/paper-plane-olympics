@@ -1,52 +1,19 @@
-// https://rsms.me/inter/lab/
-
-@font-face {
-  font-family: "Inter";
-  src: url("/fonts/InterVariable.ttf") format("truetype-variations");
-  font-display: swap;
-  font-weight: 100 900;
-  font-feature-settings: "liga" 1, "calt" 1, "ss01" on;
-}
-
-@font-face {
-  font-family: "Inter-Italic";
-  src: url("/fonts/InterVariable-Italic.ttf") format("truetype-variations");
-  font-display: swap;
-  font-weight: 100 900;
-  font-feature-settings: "liga" 1, "calt" 1, "ss01" on;
-}
-
-@mixin text-regular {
-  font-family: "Inter";
-  font-variation-settings: "opsz" 14, "wght" 335;
-}
-
-@mixin text-bold {
-  font-family: "Inter";
-  font-variation-settings: "opsz" 32, "wght" 700;
-}
-
-@mixin text-italic {
-  font-family: "Inter-Italic";
-  font-variation-settings: "opsz" 14, "wght" 310;
-}
-
-.h1,
-h1,
-.h2,
 h2,
-.h3,
-h3,
-.h4,
-h4,
-.h5,
-h5,
-.h6,
-h6,
-strong {
-  @include text-bold;
+.h2 {
+  font-size: var(--step-7);
 }
 
-em {
-  @include text-italic;
+h3,
+.h3 {
+  font-size: var(--step-6);
 }
+
+.h4 {
+  font-size: var(--step-5);
+}
+
+// @for $i from -2 through 7 {
+//   .text-#{$i} {
+//     font-size: var(--step-#{$i});
+//   }
+// }

@@ -1,9 +1,9 @@
-@use "../variables/colors" as colors;
+:root {
+  --layout-border: 3px solid var(--color-black);
+  --layout-border-dashed: 5px dashed var(--color-light-gray);
+  --layout-border-radius-sm: 8px;
+  --layout-border-radius: 15px;
 
-$border: 3px solid colors.$black;
-$border-dashed: 5px dashed colors.$light-gray;
-$border-radius-sm: 8px;
-$border-radius: 15px;
-
-$gutter-sm: 15px;
-$gutter: 30px;
+  --layout-gutter-sm: 15px;
+  --layout-gutter: 30px;
+}

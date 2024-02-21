@@ -1,36 +1,27 @@
-@use "../variables/breakpoints" as breakpoints;
-@use "../variables/colors" as colors;
-@use "../variables/layout" as layout;
-
 .card {
+  position: relative;
+  display: block;
+  height: 100%;
 
-  &--placeholder {
-    
-    .card__content {
-      position: relative;
-      overflow: hidden;
-      border: layout.$border-dashed;
-
-      .card__content__image {
-        border-color: colors.$light-gray;
-        background-color: colors.$light-gray;
-      }
-    }
-  }
-  
   &__content {
-    border: layout.$border;
-    border-radius: layout.$border-radius;
-    padding: layout.$gutter-sm;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border: var(--layout-border);
+    border-radius: var(--layout-border-radius);
+    transform-origin: center center;
+    transition: transform 150ms ease-in-out 0s;
+    will-change: transform;
+    padding: var(--layout-gutter-sm);
 
     &__image {
       position: relative;
       overflow: hidden;
       display: block;
-      border: layout.$border;
-      border-radius: layout.$border-radius-sm;
+      border: var(--layout-border);
+      border-radius: var(--layout-border-radius-sm);
       aspect-ratio: 600/500;
-      margin-bottom: layout.$gutter-sm;
+      margin-bottom: var(--layout-gutter-sm);
 
       img {
         width: 100%;
@@ -40,18 +31,37 @@
     }
 
     &__title {
-      
+      margin-bottom: var(--layout-gutter);
     }
 
     &__subtitle {
-      
+      margin-top: auto;
     }
   }
 
-  &:not(.card--placeholder) .card__content__image {
-    background-image: var(--fpo-plane-url);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
+  &--placeholder {
+    .card__content {
+      position: relative;
+      overflow: hidden;
+      border: var(--layout-border-dashed);
+
+      .card__content__image {
+        border-color: var(--color-light-gray);
+        background-color: var(--color-light-gray);
+      }
+    }
+  }
+
+  &:not(.card--placeholder) {
+    &:hover .card__content {
+      transform: scale(1.02);
+    }
+
+    .card__content__image {
+      background-image: var(--fpo-plane-url);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+    }
   }
 }

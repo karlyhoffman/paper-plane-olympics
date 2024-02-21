@@ -1,0 +1,21 @@
+html {
+  background-color: var(--color-white);
+  color: var(--color-black);
+  font-size: 100%;
+}
+
+body {
+  min-height: 100vh;
+  font-size: clamp(1rem, 0.9643rem + 0.1786vi, 1.125rem);
+  @include text-regular;
+}
+
+.container {
+  max-width: 1000px;
+  margin-inline: auto;
+  padding-inline: var(--layout-gutter);
+
+  &--sm {
+    max-width: 650px;
+  }
+}

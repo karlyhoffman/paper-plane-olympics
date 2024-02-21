@@ -1,4 +1,4 @@
-@use "../variables/breakpoints" as breakpoints;
+@use "../mixins/breakpoints" as *;
 
 .sr-only {
   position: absolute;
@@ -15,7 +15,7 @@
 .mobile-only {
   display: block;
 
-  @include breakpoints.media-breakpoint-up(md) {
+  @include media-breakpoint-up(md) {
     display: none;
   }
 }
@@ -23,7 +23,7 @@
 .desktop-only {
   display: none;
 
-  @include breakpoints.media-breakpoint-up(md) {
+  @include media-breakpoint-up(md) {
     display: block;
   }
 }

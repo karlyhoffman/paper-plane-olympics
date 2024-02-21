@@ -1,35 +1,48 @@
-@use "../variables/breakpoints" as breakpoints;
-@use "../variables/layout" as layout;
+@use "../mixins/breakpoints" as *;
 
 #homepage {
   section {
     position: relative;
     min-height: 100vh;
 
-    &#events {
+    h2 {
+      text-align: center;
+    }
 
+    &#date {
+      text-align: center;
+    }
+
+    &#events {
       .list {
-        padding: 120px 0 330px;
+        padding: 70px 0 330px;
 
         &--featured-events {
+          .event__desc {
+            text-align: center;
+            margin-inline: auto;
 
+            h3 {
+              margin-bottom: var(--layout-gutter-sm);
+            }
+          }
         }
 
         &--participants {
           display: flex;
           flex-wrap: wrap;
           justify-content: center;
-          gap: layout.$gutter;
+          gap: var(--layout-gutter);
 
           li {
             flex: 1 1 100%;
 
-            @include breakpoints.media-breakpoint-up(sm) {
-              max-width: calc(50% - layout.$gutter / 2);
+            @include media-breakpoint-up(sm) {
+              max-width: calc((100% - var(--layout-gutter)) / 2);
             }
 
-            @include breakpoints.media-breakpoint-up(lg) {
-              max-width: calc(33% - layout.$gutter);
+            @include media-breakpoint-up(lg) {
+              max-width: calc((100% - (var(--layout-gutter) * 2)) / 3);
             }
           }
         }

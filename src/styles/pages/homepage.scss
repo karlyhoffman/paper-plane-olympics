@@ -1,48 +1,96 @@
 @use "../mixins/breakpoints" as *;
 
 #homepage {
+  text-align: center;
+
   section {
     position: relative;
-    min-height: 100vh;
 
-    h2 {
-      text-align: center;
+    .title-card {
+      h2 {
+        margin-bottom: var(--layout-gutter-sm);
+      }
     }
 
-    &#date {
-      text-align: center;
-    }
+    .list {
+      &__desc {
+        text-wrap: balance;
+        margin-inline: auto;
 
-    &#events {
-      .list {
-        padding: 70px 0 330px;
+        h3 {
+          margin-bottom: var(--layout-spacing-sm);
+        }
+      }
 
-        &--featured-events {
-          .event__desc {
-            text-align: center;
-            margin-inline: auto;
+      &--instructions {
+        margin-inline: auto;
+        padding-top: var(--layout-spacing);
+        text-wrap: balance;
 
-            h3 {
-              margin-bottom: var(--layout-gutter-sm);
-            }
+        li {
+          margin-bottom: var(--layout-spacing-sm);
+        }
+      }
+
+      &--participants,
+      &--winners {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: var(--layout-gutter);
+
+        li {
+          flex: 1 1 100%;
+
+          @include media-breakpoint-up(sm) {
+            max-width: calc((100% - var(--layout-gutter)) / 2);
+          }
+
+          @include media-breakpoint-up(lg) {
+            max-width: calc((100% - (var(--layout-gutter) * 2)) / 3);
           }
         }
+      }
 
-        &--participants {
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: center;
-          gap: var(--layout-gutter);
+      &--participants {
+        padding: var(--layout-spacing-sm) 0 var(--layout-spacing-xl);
+      }
 
-          li {
-            flex: 1 1 100%;
+      &--winners {
+        padding: var(--layout-spacing-sm) 0 var(--layout-spacing-lg);
 
+        li {
+          max-width: 100%;
+
+          &:nth-child(1) {
+            flex: 1 0 100%;
+
+            .card {
+              margin-inline: auto;
+
+              @include media-breakpoint-up(sm) {
+                width: 60%;
+              }
+            }
+          } 
+
+          &:nth-child(2) {
             @include media-breakpoint-up(sm) {
-              max-width: calc((100% - var(--layout-gutter)) / 2);
+              flex: 1 0 50%;
+            }
+          }
+
+          &:nth-child(3) {
+            @include media-breakpoint-up(sm) {
+              flex: 0 1 40%;
             }
 
-            @include media-breakpoint-up(lg) {
-              max-width: calc((100% - (var(--layout-gutter) * 2)) / 3);
+            .card:last-child {
+              margin-top: var(--layout-gutter);
+
+              @include media-breakpoint-up(sm) {
+                width: 70%;
+              }
             }
           }
         }

@@ -16,7 +16,8 @@ const { data } = await fetchSingleDocumentByType({
 			'event.winner_silver',
 			'event.winner_bronze',
 			'event.winner_honorable_mention',
-			'plane.name'
+			'plane.name',
+			'plane.photo',
 		],
 	}
 }) || {};
@@ -33,7 +34,18 @@ const {
 	results_desc
 } = data;
 
-const featuredEventIDs = featured_events.map(({ event }) => event.id) || [];
+let resultsAreIn = false;
+
+const featuredEventIDs = featured_events.map(({ event }) => {
+	const { winner_gold, winner_silver, winner_bronze, winner_honorable_mention } = event.data;
+	const hasResults = !!(winner_gold || winner_silver || winner_bronze || winner_honorable_mention);
+
+	if (hasResults && (resultsAreIn !== hasResults)) {
+		resultsAreIn = true;
+	}
+
+	return event.id
+}) || [];
 
 const eventPlanes = await fetchRelatedDocumentsByTypeAndIDs({
 	type: 'plane',
@@ -58,12 +70,17 @@ const eventPlanes = await fetchRelatedDocumentsByTypeAndIDs({
 	))}
 
   <section id="date" class="container">
-		<PrismicHtml html={event_date_headline} />
-		<p>{event_date || 'TBD'}</p>
+		<TitleCard>
+			<PrismicHtml html={event_date_headline} />
+			<p>{event_date || 'TBD'}</p>
+		</TitleCard>
   </section>
 
 	<section id="events" class="container">
-		<PrismicHtml html={events_headline} />
+		<TitleCard>
+			<PrismicHtml html={events_headline} />
+		</TitleCard>
+
 		<ul class="list list--featured-events">
 			{featured_events.map(({ event: { id: eventID = "", data } }) => {
 				const entries = eventPlanes.filter((plane) => plane.data.event.id === eventID);
@@ -71,8 +88,8 @@ const eventPlanes = await fetchRelatedDocumentsByTypeAndIDs({
 
 				return (
 					<li class="event">
-						<div class="event__desc container--sm">
-							<h3 class="h4">{asText(data.event_name)}</h3>
+						<div class="list__desc container--sm">
+							<h3 class="text-5">{asText(data.event_name)}</h3>
 							<PrismicHtml html={data.description} />
 						</div>
 
@@ -85,27 +102,20 @@ const eventPlanes = await fetchRelatedDocumentsByTypeAndIDs({
 
 								return (
 									<li>
-										<Card
-											url={url}
-											title={asText(plane.name)}
-											subtitle={`Flown by ${pilot}`}
-											photo={plane.photo}
-											titleTag="h4"
-  										subtitleTag="h5"
-										/>
+										<Card url={url} photo={plane.photo}>
+											<h4 class="text-1" slot="title">{asText(plane.name)}</h4>
+											<p class="text--1" slot="subtitle">Built by {pilot}</p>
+										</Card>
 									</li>
 								);
 							})}
 
 							{Array.from({ length: numOfPlaceholders }).map(() => (
 								<li>
-									<Card
-										isPlaceholder
-										title="[Plane Name]"
-										subtitle="Flown by [Pilot Name]"
-										titleTag="h4"
-  									subtitleTag="h5"
-									/>
+									<Card isPlaceholder>
+										<h4 class="text-1" slot="title">[Your Plane Here]</h4>
+										<p class="text--1" slot="subtitle">Built by [Pilot]</p>
+									</Card>
 								</li>
 							))}
 						</ul>
@@ -117,9 +127,9 @@ const eventPlanes = await fetchRelatedDocumentsByTypeAndIDs({
 
 	<section id="how-to-enter" class="container">
 		<PrismicHtml html={how_headline} />
-		<ul>
+		<ul class="list list--instructions">
 			{instructions.map(({ step }) => (
-				<li>
+				<li class="text-1">
 					<PrismicHtml html={step} />
 				</li>
 			))}
@@ -127,7 +137,97 @@ const eventPlanes = await fetchRelatedDocumentsByTypeAndIDs({
 	</section>
 
 	<section id="results" class="container">
-		<PrismicHtml html={results_headline} />
-		<PrismicHtml html={results_desc} />
+		<TitleCard>
+			<PrismicHtml html={results_headline} />
+			<PrismicHtml html={results_desc} />
+		</TitleCard>
+	
+		<ul class="list list--results">
+			{!resultsAreIn && (
+				<li>
+					<ul class="list list--winners">
+						{[
+							{ title: "Gold", titleClass: 'text-5' },
+							{ title: "Silver", titleClass: 'text-4' },
+							{ title: "Bronze", titleClass: 'text-2' },
+						].map(({ title, titleClass }) => (
+							<li>
+								<Card isPlaceholder>
+									<h3 class={titleClass} slot="title">{title}</h3>
+								</Card>
+								{title === "Bronze" && (
+									<Card isPlaceholder>
+										<h3 class="text-1" slot="title">Honorable Mention</h3>
+									</Card>
+								)}
+							</li>
+						))}
+					</ul>
+				</li>
+			)}
+
+			{resultsAreIn && featured_events.map(({ event: {
+				data: {
+					event_name,
+					winner_gold, 
+					winner_silver,
+					winner_bronze,
+					winner_honorable_mention,
+				}} 
+			}) => {
+				const { name: winnerGold, photo: photoGold } = winner_gold?.data || [];
+				const { name: winnerSilver, photo: photoSilver } = winner_silver?.data || [];
+				const { name: winnerBronze, photo: photoBronze } = winner_bronze?.data || [];
+				const { name: honorableMention, photo: photoHM } = winner_honorable_mention?.data || [];
+
+				const cards = [
+					{ title: "Gold", subtitle: winnerGold, photo: photoGold, titleClass: 'text-5' },
+					{ title: "Silver", subtitle: winnerSilver, photo: photoSilver, titleClass: 'text-4' },
+					{ title: "Bronze", subtitle: winnerBronze, photo: photoBronze, titleClass: 'text-2' },
+				];
+
+				return (
+					<li>
+						<div class="list__desc container--sm">
+							<h3 class="text-5">{asText(event_name)}</h3>
+						</div>
+						<ul class="list list--winners">
+							{cards.map(({ title, subtitle, titleClass, photo }) => {
+								const subtitleClass = title === "Gold" ? "text-2" : "text-0";
+								const showHonorableMention = title === "Bronze";
+
+								return (
+									<li>
+										<Card isPlaceholder={!subtitle?.length} photo={photo}>
+											<h3 class={titleClass} slot="title">
+												{title}
+											</h3>
+											{subtitle?.length && (
+												<p class={subtitleClass} slot="subtitle">
+													{asText(subtitle)}
+												</p>
+											)}
+										</Card>
+
+										{showHonorableMention && (
+											<Card isPlaceholder={!honorableMention?.length} photo={photoHM}>
+												<h3 class="text-1" slot="title">
+													Honorable Mention
+												</h3>
+												{honorableMention?.length && (
+													<p class={subtitleClass} slot="subtitle">
+														{asText(honorableMention)}
+													</p>
+												)}
+											</Card>
+										)}
+									</li>
+								)
+							})}
+						</ul>
+					</li>
+				)
+			})}
+		</ul>
 	</section>
 </Layout>

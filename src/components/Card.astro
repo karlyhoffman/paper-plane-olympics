@@ -2,19 +2,14 @@
 import { Image } from 'astro:assets';
 import '../styles/components/card.scss';
 
+const { title, subtitle } = Astro.slots;
 const {
   url = "/",
-  title = "",
-  subtitle = "",
-  photo,
+  photo = {},
   isPlaceholder = false,
-  titleTag = "h2",
-  subtitleTag = "h3",
 } = Astro.props;
 
 const WrapperTag = isPlaceholder ? 'div' : 'a';
-const TitleTag = titleTag;
-const SubtitleTag = subtitleTag;
 ---
 
 <WrapperTag
@@ -44,16 +39,16 @@ const SubtitleTag = subtitleTag;
       )}
     </div>
 
-    {!!title.length && (
-      <TitleTag class="card__content__title text-regular">
-        {title}
-      </TitleTag>
+    {title && (
+      <div class="card__content__title">
+        <slot name="title" /> 
+      </div>
     )}
 
-    {!!subtitle.length && (
-      <SubtitleTag class="card__content__subtitle text-regular">
-        {subtitle}
-      </SubtitleTag>
+    {subtitle && (
+      <div class="card__content__subtitle">
+        <slot name="subtitle" />
+      </div>
     )}
   </div>
 </WrapperTag>

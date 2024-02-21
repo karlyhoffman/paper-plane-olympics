@@ -1,19 +1,17 @@
-h2,
-.h2 {
+h2 {
   font-size: var(--step-7);
 }
 
-h3,
-.h3 {
+h3 {
   font-size: var(--step-6);
 }
 
-.h4 {
+h4 {
   font-size: var(--step-5);
 }
 
-// @for $i from -2 through 7 {
-//   .text-#{$i} {
-//     font-size: var(--step-#{$i});
-//   }
-// }
+@for $i from -2 through 7 {
+  .text-#{$i} {
+    font-size: var(--step-#{$i});
+  }
+}

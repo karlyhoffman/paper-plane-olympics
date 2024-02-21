@@ -66,6 +66,11 @@ h6 {
 /*
 	9. Remove default list styles
 */
+ul, ol {
+  margin: 0;
+  padding: 0;
+}
+
 ul {
   list-style-type: "";
 }

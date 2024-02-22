@@ -1,8 +1,10 @@
 ---
 import { asText } from '@prismicio/client';
 import { Image } from 'astro:assets';
+import { Card, PrismicHtml, TitleCard } from '../../components';
 import { fetchDocumentsByType } from '../../lib/prismic/queries';
 import Layout from '../../layouts/Layout.astro';
+import '../../styles/pages/plane-detail.scss';
 
 export async function getStaticPaths() {
   const results = await fetchDocumentsByType({
@@ -36,24 +38,39 @@ const pilotPhoto = pilot.data.avatar?.url
   : null;
 ---
 
-<Layout title={asText(name) || 'Plane'}>
-  <h1>{asText(name)}</h1>
+<Layout
+  id="plane-detail"
+  class="container"
+  title={asText(name) || 'Plane'}
+>
+  <h1 class="text-5">{asText(name)}</h1>
 
-  {planePhoto && (
+  <section class="container--sm">
+    <Card photo={planePhoto}>
+      <h4 class="text-1" slot="title">{asText(event.data.event_name)}</h4>
+      <p class="text--1" slot="subtitle">Built by {asText(pilot.data.name)}</p>
+
+      {pilotPhoto && (
+        <Image
+          src={pilotPhoto.url}
+          width={150}
+          height={150}
+          alt={pilotPhoto.alt || ''}
+        />
+      )}
+    </Card>
+  </section>
+
+  <!-- {planePhoto && (
     <Image
       src={planePhoto.url}
       width={1400}
       height={840}
       alt={planePhoto.alt || ''}
     />
-  )}
+  )} -->
 
-  <p>
-    <strong>Event:</strong> {asText(event.data.event_name)}
-  </p>
-
-  <p>
-    <strong>Pilot:</strong> {asText(pilot.data.name)}
+  <!-- <p>
 
     {pilotPhoto && (
       <Image
@@ -63,5 +80,5 @@ const pilotPhoto = pilot.data.avatar?.url
         alt={pilotPhoto.alt || ''}
       />
     )}
-  </p>
+  </p> -->
 </Layout>

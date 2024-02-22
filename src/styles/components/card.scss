@@ -22,7 +22,7 @@
       display: block;
       border: var(--layout-border);
       border-radius: var(--layout-border-radius-sm);
-      aspect-ratio: 600/500;
+      aspect-ratio: var(--layout-pilot-photo-aspect-ratio);
       margin-bottom: var(--layout-gutter-sm);
 
       img {

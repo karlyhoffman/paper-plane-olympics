@@ -6,4 +6,69 @@
   h1 {
     margin-bottom: var(--layout-spacing);
   }
+
+  .card {
+    max-width: 500px;
+    margin: 0 auto;
+
+    &__pilot {
+      display: flex;
+      align-items: end;
+      gap: 12px;
+      position: absolute;
+      top : 0;
+      left: var(--layout-gutter);
+      right: 0;
+      aspect-ratio: var(--layout-pilot-photo-aspect-ratio);
+      text-align: left;
+
+      img {
+        display: inline-block;
+        border: var(--layout-border);
+        border-radius: var(--layout-border-radius-sm);
+      }
+
+      &__title {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        min-height: 60px;
+        overflow: hidden;
+        border: var(--layout-border);
+        border-radius: var(--layout-border-radius-sm);
+        background-color: var(--color-white);
+        margin-right: var(--layout-gutter);
+        padding: 10px 17px 10px 12px;
+
+        opacity: 0;
+        transition: opacity 150ms linear 0s;
+
+        p {
+          line-height: 1;
+        }
+      }
+
+      &:hover {
+        .card__pilot__title {
+          opacity: 1;
+        }
+      }
+    }
+
+    &__desc {
+      display: flex;
+      flex-direction: column-reverse;
+      justify-content: center;
+      align-items: center;
+      gap: var(--layout-gutter-sm);
+      padding-bottom: var(--layout-spacing-xs);
+    }
+
+    &__pilot__title,
+    &__desc {
+      * {
+        margin: 0;
+      }
+    }
+  }
 }

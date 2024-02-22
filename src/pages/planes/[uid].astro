@@ -1,7 +1,7 @@
 ---
 import { asText } from '@prismicio/client';
 import { Image } from 'astro:assets';
-import { Card, PrismicHtml, TitleCard } from '../../components';
+import { Card } from '../../components';
 import { fetchDocumentsByType } from '../../lib/prismic/queries';
 import Layout from '../../layouts/Layout.astro';
 import '../../styles/pages/plane-detail.scss';
@@ -25,16 +25,18 @@ export async function getStaticPaths() {
 }
 
 const {
-  name,
-  event,
-  photo,
-  pilot
+  name = [],
+  event = {},
+  photo = {},
+  pilot = {}
 } = Astro.props;
 
 const planePhoto = photo?.url ? photo : null;
 
-const pilotPhoto = pilot.data.avatar?.url
-  ? pilot.data.avatar
+const hasPilot = !!pilot?.id?.length;
+const avatarSize = 60;
+const pilotPhoto = hasPilot && pilot?.data?.avatar?.url
+  ? pilot?.data?.avatar
   : null;
 ---
 
@@ -45,40 +47,29 @@ const pilotPhoto = pilot.data.avatar?.url
 >
   <h1 class="text-5">{asText(name)}</h1>
 
-  <section class="container--sm">
-    <Card photo={planePhoto}>
-      <h4 class="text-1" slot="title">{asText(event.data.event_name)}</h4>
-      <p class="text--1" slot="subtitle">Built by {asText(pilot.data.name)}</p>
-
-      {pilotPhoto && (
-        <Image
-          src={pilotPhoto.url}
-          width={150}
-          height={150}
-          alt={pilotPhoto.alt || ''}
-        />
-      )}
-    </Card>
-  </section>
-
-  <!-- {planePhoto && (
-    <Image
-      src={planePhoto.url}
-      width={1400}
-      height={840}
-      alt={planePhoto.alt || ''}
-    />
-  )} -->
-
-  <!-- <p>
-
-    {pilotPhoto && (
-      <Image
-        src={pilotPhoto.url}
-        width={150}
-        height={150}
-        alt={pilotPhoto.alt || ''}
-      />
+  <Card photo={planePhoto}>
+    {hasPilot && (
+      <div class="card__pilot">
+        {pilotPhoto && (
+          <Image
+            src={pilotPhoto.url}
+            width={avatarSize}
+            height={avatarSize}
+            alt={pilotPhoto.alt || ''}
+          />
+        )}
+        <div class="card__pilot__title desktop-only">
+          <h2 class="text--1">Pilot:&nbsp;</h2>
+          <p class="text-1">{asText(pilot?.data?.name)}</p>
+        </div>
+      </div>
     )}
-  </p> -->
+
+    {event?.data?.event_name && (
+      <div class="card__desc">
+        <h2 class="text-0">Event</h2>
+        <p class="text-4">{asText(event?.data?.event_name)}</p>
+      </div>
+    )}
+  </Card>
 </Layout>

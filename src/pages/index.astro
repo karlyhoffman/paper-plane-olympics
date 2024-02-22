@@ -141,7 +141,7 @@ const eventPlanes = await fetchRelatedDocumentsByTypeAndIDs({
 			<PrismicHtml html={results_headline} />
 			<PrismicHtml html={results_desc} />
 		</TitleCard>
-	
+
 		<ul class="list list--results">
 			{!resultsAreIn && (
 				<li>
@@ -169,11 +169,11 @@ const eventPlanes = await fetchRelatedDocumentsByTypeAndIDs({
 			{resultsAreIn && featured_events.map(({ event: {
 				data: {
 					event_name,
-					winner_gold, 
+					winner_gold,
 					winner_silver,
 					winner_bronze,
 					winner_honorable_mention,
-				}} 
+				}}
 			}) => {
 				const { name: winnerGold, photo: photoGold } = winner_gold?.data || [];
 				const { name: winnerSilver, photo: photoSilver } = winner_silver?.data || [];

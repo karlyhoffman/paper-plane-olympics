@@ -1,12 +1,5 @@
 {
   "Overview": {
-    "page_title": {
-      "type": "StructuredText",
-      "config": {
-        "single": "heading1",
-        "label": "Page Title"
-      }
-    },
     "uid": {
       "type": "UID",
       "config": {
@@ -241,7 +234,7 @@
                   "select": "document",
                   "customtypes": ["plane"],
                   "label": "Plane",
-                  "placeholder": " a plane"
+                  "placeholder": "Select a plane"
                 }
               }
             }

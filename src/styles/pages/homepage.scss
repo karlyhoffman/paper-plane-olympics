@@ -15,7 +15,6 @@
     .list {
       &__desc {
         text-wrap: balance;
-        margin-inline: auto;
 
         h3 {
           margin-bottom: var(--layout-spacing-sm);
@@ -23,9 +22,10 @@
       }
 
       &--instructions {
+        max-width: 700px;
+        text-wrap: balance;
         margin-inline: auto;
         padding-top: var(--layout-spacing);
-        text-wrap: balance;
 
         li {
           margin-bottom: var(--layout-spacing-sm);
@@ -53,11 +53,11 @@
       }
 
       &--participants {
-        padding: var(--layout-spacing-sm) 0 var(--layout-spacing-xl);
+        padding: var(--layout-spacing-sm) 0 var(--layout-spacing-xxl);
       }
 
       &--winners {
-        padding: var(--layout-spacing-sm) 0 var(--layout-spacing-lg);
+        padding: var(--layout-spacing-sm) 0 var(--layout-spacing-xl);
 
         li {
           max-width: 100%;
@@ -72,7 +72,7 @@
                 width: 60%;
               }
             }
-          } 
+          }
 
           &:nth-child(2) {
             @include media-breakpoint-up(sm) {

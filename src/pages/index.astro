@@ -127,7 +127,7 @@ const eventPlanes = await fetchRelatedDocumentsByTypeAndIDs({
 
 	<section id="how-to-enter" class="container">
 		<PrismicHtml html={how_headline} />
-		<ul class="list list--instructions">
+		<ul class="list list--instructions container--sm">
 			{instructions.map(({ step }) => (
 				<li class="text-1">
 					<PrismicHtml html={step} />

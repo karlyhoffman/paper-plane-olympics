@@ -13,16 +13,11 @@
     }
 
     .list {
-      &__desc {
-        text-wrap: balance;
-
-        h3 {
-          margin-bottom: var(--layout-spacing-sm);
-        }
+      &__desc h3 {
+        margin-bottom: var(--layout-spacing-sm);
       }
 
       &--instructions {
-        max-width: 700px;
         text-wrap: balance;
         margin-inline: auto;
         padding-top: var(--layout-spacing);

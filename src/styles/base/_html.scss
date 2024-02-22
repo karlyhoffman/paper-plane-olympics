@@ -6,8 +6,14 @@ html {
 
 body {
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
   font-size: clamp(1rem, 0.9643rem + 0.1786vi, 1.125rem);
   @include text-regular;
+
+  & > * {
+    width: 100%;
+  }
 }
 
 p {

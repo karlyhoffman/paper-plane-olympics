@@ -1,6 +1,8 @@
 footer {
+  display: block;
   font-size: var(--step-0);
   text-align: center;
-  padding-top: var(--layout-gutter);
-  padding-bottom: var(--layout-gutter);
+  margin-top: auto;
+  padding-top: var(--layout-gutter-sm);
+  padding-bottom: var(--layout-gutter-sm);
 }

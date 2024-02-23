@@ -1,5 +1,5 @@
 ---
-import { asText } from '@prismicio/client';
+import { SliceZone } from '../components';
 import { fetchDocumentsByType } from '../lib/prismic/queries';
 import Layout from '../layouts/Layout.astro';
 
@@ -13,20 +13,21 @@ export async function getStaticPaths() {
 }
 
 const {
-  page_title,
   slices_hero = [],
   slices_body = [],
   seo_title,
   seo_image,
   seo_desc,
 } = Astro.props;
-
 ---
 
 <Layout
+  id="custom_template"
+  class="container"
   title={seo_title}
   seoImage={seo_image}
   seoDesc={seo_desc}
 >
-  <h1>{asText(page_title)}</h1>
+  <SliceZone slices={slices_hero} />
+  <SliceZone slices={slices_body} />
 </Layout>

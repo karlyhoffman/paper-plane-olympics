@@ -1,0 +1,13 @@
+---
+import { asText } from '@prismicio/client';
+import '../../styles/components/slices/hero-simple.scss';
+
+const { headline, description } = Astro.props;
+---
+
+<section class="hero-simple container">
+  <h1 class="hero-simple__title text-5">{asText(headline)}</h1>
+  <div class="hero-simple__desc">
+    {asText(description)}
+  </div>
+</section>

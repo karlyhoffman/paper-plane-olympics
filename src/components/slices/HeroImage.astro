@@ -1,0 +1,16 @@
+---
+import { asText } from '@prismicio/client';
+import '../../styles/components/slices/hero-image.scss';
+
+const {
+  headline = [],
+  bg_overlay = false,
+  background_image = {},
+} = Astro.props;
+---
+
+<section class="hero-image">
+  <h1 class="hero-image__title container--lg text-5">
+    {asText(headline)}
+  </h1>
+</section>

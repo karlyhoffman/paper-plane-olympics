@@ -1,4 +1,5 @@
 ---
+import  SpeedInsights  from "@vercel/speed-insights/astro";
 import { fetchSingleDocumentByType } from '../lib/prismic/queries';
 import { Footer, SEO } from '../components';
 import '../styles/global.scss';
@@ -43,6 +44,7 @@ const { footer_desc: footerDesc } = footerData;
 		/>
 	</head>
 	<body>
+		<SpeedInsights />
 		<main id={id} class={className}>
 			<slot />
 		</main>

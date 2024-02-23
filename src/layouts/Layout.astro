@@ -10,7 +10,7 @@ const { data: footerData } = await fetchSingleDocumentByType({ type: 'global_nav
 const { title, seoImage, seoDesc, id, class: className } = Astro.props;
 
 const {
-	seo_default_title: pageDefaultTitle,
+	seo_default_title: seoDefaultTitle,
 	seo_default_desc,
 	seo_default_image,
 	theme_secondary_color,
@@ -26,6 +26,10 @@ const {
 } = pageData;
 
 const { footer_desc: footerDesc } = footerData;
+
+const seoTitle = title
+	? `${title} | Paper Plane Olympics`
+	: (seoDefaultTitle ?? 'Paper Plane Olympics');
 ---
 
 <!doctype html>
@@ -38,7 +42,7 @@ const { footer_desc: footerDesc } = footerData;
 		<meta name="generator" content={Astro.generator} />
 
 		<SEO
-			title={title + ' | Paper Plane Olymics' || pageDefaultTitle || 'Paper Plane Olympics'}
+			title={seoTitle}
 			description={seoDesc || seo_default_desc}
 			image={seoImage || seo_default_image}
 		/>

@@ -1,0 +1,26 @@
+---
+import { asText } from '@prismicio/client';
+import { PrismicHtml } from '..';
+import '../../styles/components/slices/text-with-image.scss';
+
+const {
+  headline,
+  description,
+  align_image: alignImageRight = false,
+  image,
+} = Astro.props;
+---
+
+<section class="text-with-image container">
+  {!!headline?.length && (
+    <h2 class="text-with-image__title text-5">
+      {asText(headline)}
+    </h2>
+  )}
+
+  {!!description.length && (
+    <div class="text-with-image__content">
+      <PrismicHtml html={description} />
+    </div>
+  )}
+</section>

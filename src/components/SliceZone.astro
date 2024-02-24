@@ -15,10 +15,8 @@ const { slices = [] } = Astro.props;
     const sliceData = { ...primary, items };
     const SliceComponent = sliceComponents[slice_type];
 
-    if (SliceComponent) {
-      return <SliceComponent {...sliceData} />;
-    }
-
-    return null;
+    return SliceComponent
+      ? <SliceComponent {...sliceData} />
+      : null;
   }
 )}

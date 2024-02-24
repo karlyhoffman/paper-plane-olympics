@@ -1,0 +1,48 @@
+---
+import { asText } from '@prismicio/client';
+import { Card, PrismicHtml } from '..';
+import { fetchDocumentsByType } from '../../lib/prismic/queries';
+import '../../styles/components/slices/events-index.scss';
+
+const { headline, description } = Astro.props;
+
+const events = await fetchDocumentsByType({
+  type: 'event',
+  options: {
+    fetchLinks: ['plane.winner_gold'],
+  }
+}) || [];
+
+// events.forEach((event) => {
+//   console.log(event.data);
+// });
+---
+
+<section class="events-index container">
+  {!!headline?.length && (
+    <h2 class="events-index__title text-5">
+      {asText(headline)}
+    </h2>
+  )}
+
+  {!!description?.length && (
+    <div class="events-index__content">
+      <PrismicHtml html={description} />
+    </div>
+  )}
+
+  <!-- {!!events.length && (
+    <ul class="events-index__list container--sm">
+      {events.map((event) => {
+        return (
+          <li>
+            <Card>
+              <h3 class="text-1" slot="title">{asText(plane?.name)}</h4>
+              <p class="text--1" slot="subtitle">Built by {pilot}</p>
+            </Card>
+          </li>
+        );
+      })}
+    </ul>
+  )} -->
+</section>

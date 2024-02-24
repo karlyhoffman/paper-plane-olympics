@@ -2,8 +2,8 @@
 import { asText } from '@prismicio/client';
 import { Image } from 'astro:assets';
 import { Card } from '../../components';
+import { Layout } from '../../layouts';
 import { fetchDocumentsByType } from '../../lib/prismic/queries';
-import Layout from '../../layouts/Layout.astro';
 import '../../styles/pages/plane-detail.scss';
 
 export async function getStaticPaths() {

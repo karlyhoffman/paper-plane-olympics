@@ -30,3 +30,5 @@ export const client = prismic.createClient(PRISMIC_API_URL, {
   accessToken,
   routes,
 });
+
+// client.enableAutoPreviews();

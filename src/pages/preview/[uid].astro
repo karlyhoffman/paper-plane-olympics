@@ -1,0 +1,14 @@
+---
+import { client } from '../../lib/prismic/client';
+
+const previewCookie = Astro?.cookies?.get("io.prismic.preview")?.value;
+
+if (!previewCookie) {
+  return Astro.redirect("/404");
+}
+
+const page = await client.getByUID('custom_template', 'block-playground', { ref: previewCookie })
+
+console.log({ previewCookie, page })
+---
+

@@ -1,8 +1,8 @@
 ---
 import { asText } from '@prismicio/client';
 import { Card, PrismicHtml, TitleCard } from '../components';
+import { Layout } from '../layouts';
 import { fetchSingleDocumentByType, fetchRelatedDocumentsByTypeAndIDs } from '../lib/prismic/queries';
-import Layout from '../layouts/Layout.astro';
 import '../styles/pages/homepage.scss';
 
 const { data } = await fetchSingleDocumentByType({

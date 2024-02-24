@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<title>Preview</title>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="robots" content="noindex" />
+
+		<script
+			async
+			defer
+			src="https://static.cdn.prismic.io/prismic.js?new=true&repo=paper-plane-olympics"
+		></script>
+	</head>
+	<body>
+		<slot>
+			<h1>Loading Preview...</h1>
+		</slot>
+	</body>
+</html>
+
+<style lang="scss">
+  h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+  }
+</style>

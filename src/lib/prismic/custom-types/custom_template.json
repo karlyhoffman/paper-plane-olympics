@@ -279,6 +279,13 @@
                   "placeholder": "Select a link",
                   "select": null
                 }
+              },
+              "link_label": {
+                "type": "Text",
+                "config": {
+                  "label": "Link Label",
+                  "placeholder": "Write the label of the featured link here."
+                }
               }
             },
             "repeat": {}

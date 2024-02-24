@@ -4,7 +4,18 @@ import { fetchDocumentsByType } from '../lib/prismic/queries';
 import Layout from '../layouts/Layout.astro';
 
 export async function getStaticPaths() {
-  const results = await fetchDocumentsByType({ type: 'custom_template' }) || [];
+  const results = await fetchDocumentsByType({
+    type: 'custom_template',
+    options: {
+      fetchLinks: [
+        'event.event_name',
+        'event.description',
+        'event.winner_gold',
+        'plane.name',
+        'plane.photo',
+      ],
+    }
+  }) || [];
 
   return results.map(({ uid, data }) => ({
     params: { uid },

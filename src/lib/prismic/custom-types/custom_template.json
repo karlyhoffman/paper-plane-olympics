@@ -1,5 +1,13 @@
 {
   "Overview": {
+    "display_name": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading4",
+        "label": "Display Name",
+        "placeholder": "Write how the page will display in the CMS here."
+      }
+    },
     "uid": {
       "type": "UID",
       "config": {

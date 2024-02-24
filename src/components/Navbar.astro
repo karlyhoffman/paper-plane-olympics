@@ -1,0 +1,18 @@
+---
+import { Image } from 'astro:assets';
+import cloud from '../../public/images/cloud.svg';
+import '../styles/components/navbar.scss';
+---
+
+<header>
+  <nav class="navbar">
+    <a href="/" class="navbar__logo">
+      <Image
+        src={cloud}
+        width={452}
+        height={175}
+        alt="a cloud graphic"
+      />
+    </a>
+  </nav>
+</header>

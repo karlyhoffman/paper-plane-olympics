@@ -1,0 +1,36 @@
+@use "../mixins/breakpoints" as *;
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  padding: var(--layout-gutter-sm);
+
+  @include media-breakpoint-up(md) {
+    padding-inline: var(--layout-gutter);
+  }
+
+  .navbar {
+
+    &__logo {
+      display: block;
+      width: 140px;
+      width: min(25vw, 140px);
+      height: auto;
+      transform: scaleX(-1) rotate(3deg);
+
+      img {
+        width: 100%;
+        height: auto;
+        transform-origin: center;
+        transition: transform 150ms ease-in-out 0s;
+      }
+
+      &:hover img {
+        transform: scale(1.05);
+      }
+    }
+  }
+}

@@ -1,7 +1,7 @@
 ---
 import  SpeedInsights  from "@vercel/speed-insights/astro";
 import { fetchSingleDocumentByType } from '../lib/prismic/queries';
-import { Footer, SEO } from '../components';
+import { Footer, Navbar, SEO } from '../components';
 import '../styles/global.scss';
 
 const { data: pageData } = await fetchSingleDocumentByType({ type: 'global_settings' }) || {};
@@ -49,6 +49,7 @@ const seoTitle = title
 	</head>
 	<body>
 		<SpeedInsights />
+		<Navbar />
 		<main id={id} class={className}>
 			<slot />
 		</main>

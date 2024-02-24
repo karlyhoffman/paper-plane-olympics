@@ -1,7 +1,36 @@
 ---
 import { PrismicPreview } from '../../layouts';
+
+
+/** TRY THIS ? */
+// import { client } from '../../lib/prismic/client';
+
+// const defaultURL = "/";
+
+// const url = await client.resolvePreviewURL({
+//   linkResolver: ({ isBroken, type, uid }) => {
+//     console.log({ isBroken, type, uid });
+    
+
+//     if (isBroken) {
+//       return "/404";
+//     } else if (type === "custom_template") {
+//       // return `/preview/${uid}`;
+//       return `/${uid}`;
+//     }
+//     // else if (type === "plane") {
+//     //   return `/preview/plane/${uid}`;
+//     // }
+//     return defaultURL;
+//   },
+//   defaultURL,
+// });
+
+// console.log(url);
+
 ---
 
+<!-- <script define:vars={{ url }}> -->
 <script>
   import * as prismic from "@prismicio/client";
 

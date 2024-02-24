@@ -1,5 +1,11 @@
 ---
-import { HeroImage, HeroSimple } from './slices';
+import { HeroImage, HeroSimple, Text } from './slices';
+
+const sliceComponents = {
+  hero_image: HeroImage,
+  hero_simple: HeroSimple,
+  text: Text,
+};
 
 const { slices = [] } = Astro.props;
 ---
@@ -7,20 +13,12 @@ const { slices = [] } = Astro.props;
 {slices.map(
   ({ slice_type, primary = {}, items = [] }) => {
     const sliceData = { ...primary, items };
+    const SliceComponent = sliceComponents[slice_type];
 
-    switch (slice_type) {
-
-      // Hero Slices
-      case 'hero_image':
-        return <HeroImage {...sliceData} />;
-
-      case 'hero_simple':
-        return <HeroSimple {...sliceData} />;
-
-      // Body Slices
-
-      default:
-        return null;
+    if (SliceComponent) {
+      return <SliceComponent {...sliceData} />;
     }
+
+    return null;
   }
 )}

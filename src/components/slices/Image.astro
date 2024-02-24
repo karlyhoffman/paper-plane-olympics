@@ -1,0 +1,18 @@
+---
+import { Image as AstroImage } from 'astro:assets';
+import '../../styles/components/slices/image.scss';
+
+const { image } = Astro.props;
+---
+
+<section class="image">
+  {image?.url && (
+    <AstroImage
+      class={image.mobile?.url && 'desktop-only'}
+      src={image.url}
+      alt={image.alt || ''}
+      width={image.dimensions.width}
+      height={image.dimensions.height}
+    />
+  )}
+</section>

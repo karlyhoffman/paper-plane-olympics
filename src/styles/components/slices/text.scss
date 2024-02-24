@@ -5,5 +5,12 @@
 
   &__content {
     padding-top: var(--layout-spacing);
+
+    img {
+      display: block;
+      width: 70%;
+      height: auto;
+      margin: var(--layout-spacing-sm) auto;
+    }
   }
 }

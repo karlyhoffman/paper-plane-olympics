@@ -1,0 +1,12 @@
+.image {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  overflow: clip;
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+}

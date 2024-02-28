@@ -19,17 +19,20 @@ header {
       width: 140px;
       width: min(25vw, 140px);
       height: auto;
-      transform: scaleX(-1) rotate(3deg);
+  
+      transform-origin: center;
+      transition: transform 150ms ease-in-out 0s;
+      transform: scale(0.55) translate(-50%, -50%);
 
       img {
         width: 100%;
         height: auto;
         transform-origin: center;
-        transition: transform 150ms ease-in-out 0s;
+        transform: scaleX(-1) rotate(60deg);
       }
 
-      &:hover img {
-        transform: scale(1.05);
+      &:hover {
+        transform: scale(0.6) translate(-45%, -45%);
       }
     }
   }

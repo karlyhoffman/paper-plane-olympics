@@ -1,18 +1,22 @@
 ---
 import { Image } from 'astro:assets';
-import cloud from '../../public/images/cloud.svg';
+import plane from '../../public/images/plane.svg';
 import '../styles/components/navbar.scss';
+
+const isHomepage = Astro.url.pathname === '/';
 ---
 
-<header>
-  <nav class="navbar">
-    <a href="/" class="navbar__logo">
-      <Image
-        src={cloud}
-        width={452}
-        height={175}
-        alt="a cloud graphic"
-      />
-    </a>
-  </nav>
-</header>
+{!isHomepage && (
+  <header>
+    <nav class="navbar">
+      <a href="/" class="navbar__logo">
+        <Image
+          src={plane}
+          width={452}
+          height={175}
+          alt="a cloud graphic"
+        />
+      </a>
+    </nav>
+  </header>
+)}

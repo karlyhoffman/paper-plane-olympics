@@ -1,9 +1,11 @@
 ---
+import { Image } from 'astro:assets';
 import { asText } from '@prismicio/client';
 import { Card, PrismicHtml, TitleCard } from '../components';
 import { fetchSingleDocumentByType, fetchRelatedDocumentsByTypeAndIDs } from '../lib/prismic/queries';
 import Layout from '../layouts/Layout.astro';
 import '../styles/pages/homepage.scss';
+import cloud from '../../public/images/cloud.svg';
 
 const { data } = await fetchSingleDocumentByType({
 	type: 'homepage',
@@ -73,12 +75,45 @@ const eventPlanes = await fetchRelatedDocumentsByTypeAndIDs({
 		<TitleCard>
 			<PrismicHtml html={event_date_headline} />
 			<p>{event_date || 'TBD'}</p>
+			<div class="cloud cloud--left">
+				<Image
+					src={cloud}
+					width={452}
+					height={175}
+					alt="a cloud graphic"
+				/>
+			</div>
+			<div class="cloud cloud--right">
+				<Image
+					src={cloud}
+					width={452}
+					height={175}
+					alt="a cloud graphic"
+				/>
+			</div>
 		</TitleCard>
   </section>
 
 	<section id="events" class="container">
 		<TitleCard>
 			<PrismicHtml html={events_headline} />
+
+			<div class="cloud cloud--left">
+				<Image
+					src={cloud}
+					width={452}
+					height={175}
+					alt="a cloud graphic"
+				/>
+			</div>
+			<div class="cloud cloud--right">
+				<Image
+					src={cloud}
+					width={452}
+					height={175}
+					alt="a cloud graphic"
+				/>
+			</div>
 		</TitleCard>
 
 		<ul class="list list--featured-events">
@@ -140,6 +175,23 @@ const eventPlanes = await fetchRelatedDocumentsByTypeAndIDs({
 		<TitleCard>
 			<PrismicHtml html={results_headline} />
 			<PrismicHtml html={results_desc} />
+
+			<div class="cloud cloud--left">
+				<Image
+					src={cloud}
+					width={452}
+					height={175}
+					alt="a cloud graphic"
+				/>
+			</div>
+			<div class="cloud cloud--right">
+				<Image
+					src={cloud}
+					width={452}
+					height={175}
+					alt="a cloud graphic"
+				/>
+			</div>
 		</TitleCard>
 
 		<ul class="list list--results">

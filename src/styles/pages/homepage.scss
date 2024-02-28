@@ -6,7 +6,52 @@
   section {
     position: relative;
 
+    &#date .cloud {
+      &--left {
+        top: -15vh;
+        left: -20vw;
+        z-index: -1;
       }
+
+      &--right {
+        top: 15vh;
+        right: -12vw;
+        z-index: 1;
+      }
+    }
+
+    &#events .cloud {
+      &--left {
+        bottom: 5vh;
+        left: -18vw;
+        z-index: 1;
+      }
+
+      &--right {
+        top: -20vh;
+        right: -17vw;
+        z-index: -1;
+      }
+    }
+
+    &#results .cloud {
+      &--left {
+        top: -10vh;
+        left: -22vw;
+        z-index: -1;
+      }
+
+      &--right {
+        bottom: -3vh;
+        right: -19vw;
+        z-index: -1;
+      }
+    }
+
+    .cloud {
+      position: absolute;
+      // pointer-events: none;
+      transform: scale(0.7);
     }
 
     .list {

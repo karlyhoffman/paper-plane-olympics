@@ -75,45 +75,31 @@ const eventPlanes = await fetchRelatedDocumentsByTypeAndIDs({
 		<TitleCard>
 			<PrismicHtml html={event_date_headline} />
 			<p>{event_date || 'TBD'}</p>
-			<div class="cloud cloud--left">
-				<Image
-					src={cloud}
-					width={452}
-					height={175}
-					alt="a cloud graphic"
-				/>
-			</div>
-			<div class="cloud cloud--right">
-				<Image
-					src={cloud}
-					width={452}
-					height={175}
-					alt="a cloud graphic"
-				/>
-			</div>
 		</TitleCard>
   </section>
+
+	<div class="clouds">
+		<div class="cloud cloud--left">
+			<Image
+				src={cloud}
+				width={452}
+				height={175}
+				alt="a cloud graphic"
+			/>
+		</div>
+		<div class="cloud cloud--right">
+			<Image
+				src={cloud}
+				width={452}
+				height={175}
+				alt="a cloud graphic"
+			/>
+		</div>
+	</div>
 
 	<section id="events" class="container">
 		<TitleCard>
 			<PrismicHtml html={events_headline} />
-
-			<div class="cloud cloud--left">
-				<Image
-					src={cloud}
-					width={452}
-					height={175}
-					alt="a cloud graphic"
-				/>
-			</div>
-			<div class="cloud cloud--right">
-				<Image
-					src={cloud}
-					width={452}
-					height={175}
-					alt="a cloud graphic"
-				/>
-			</div>
 		</TitleCard>
 
 		<ul class="list list--featured-events">
@@ -171,27 +157,29 @@ const eventPlanes = await fetchRelatedDocumentsByTypeAndIDs({
 		</ul>
 	</section>
 
+	<div class="clouds">
+		<div class="cloud cloud--left">
+			<Image
+				src={cloud}
+				width={452}
+				height={175}
+				alt="a cloud graphic"
+			/>
+		</div>
+		<div class="cloud cloud--right">
+			<Image
+				src={cloud}
+				width={452}
+				height={175}
+				alt="a cloud graphic"
+			/>
+		</div>
+	</div>
+
 	<section id="results" class="container">
 		<TitleCard>
 			<PrismicHtml html={results_headline} />
 			<PrismicHtml html={results_desc} />
-
-			<div class="cloud cloud--left">
-				<Image
-					src={cloud}
-					width={452}
-					height={175}
-					alt="a cloud graphic"
-				/>
-			</div>
-			<div class="cloud cloud--right">
-				<Image
-					src={cloud}
-					width={452}
-					height={175}
-					alt="a cloud graphic"
-				/>
-			</div>
 		</TitleCard>
 
 		<ul class="list list--results">

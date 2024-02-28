@@ -6,59 +6,7 @@
   section {
     position: relative;
 
-    &#date .cloud {
-      &--left {
-        top: -15vh;
-        left: -20vw;
-        z-index: -1;
-      }
-
-      &--right {
-        top: 15vh;
-        right: -12vw;
-        z-index: 1;
-      }
-    }
-
-    &#events .cloud {
-      &--left {
-        bottom: 5vh;
-        left: -18vw;
-        z-index: 1;
-      }
-
-      &--right {
-        top: -20vh;
-        right: -17vw;
-        z-index: -1;
-      }
-    }
-
-    &#results .cloud {
-      &--left {
-        top: -10vh;
-        left: -22vw;
-        z-index: -1;
-      }
-
-      &--right {
-        bottom: -3vh;
-        right: -19vw;
-        z-index: -1;
-      }
-    }
-
-    .cloud {
-      position: absolute;
-      // pointer-events: none;
-      transform: scale(0.7);
-    }
-
     .list {
-      &--featured-events {
-        padding-top: var(--layout-spacing-xl);
-      }
-
       &--instructions {
         text-wrap: balance;
         margin-inline: auto;
@@ -131,6 +79,35 @@
             }
           }
         }
+      }
+    }
+  }
+
+  .clouds {
+    position: relative;
+
+    .cloud {
+      position: absolute;
+      transform-origin: center;
+      transition: transform 150ms ease-in-out 0s;
+      transform: scale(0.7);
+
+      &:hover {
+        transform: scale(0.72);
+      }
+
+      &--left {
+        top: -2vh;
+        left: 3%;
+
+        img {
+          transform: scaleX(-1) rotate(3deg);
+        }
+      }
+    
+      &--right {
+        top: 20vh;
+        right: 5%;
       }
     }
   }

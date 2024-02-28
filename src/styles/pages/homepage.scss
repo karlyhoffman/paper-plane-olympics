@@ -85,6 +85,7 @@
 
   .clouds {
     position: relative;
+    z-index: 4;
 
     .cloud {
       position: absolute;

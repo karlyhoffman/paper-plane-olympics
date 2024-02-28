@@ -14,7 +14,7 @@ const { headline, text } = Astro.props;
   )}
 
   {!!text.length && (
-    <div class="text__content">
+    <div class="text__content richtext">
       <PrismicHtml html={text} />
     </div>
   )}

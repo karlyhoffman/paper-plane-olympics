@@ -16,9 +16,9 @@
       transform: map-get($transform, $i);
       top: map-get($top, $i);
       left: map-get($left, $i);
-      animation: map-get($timing-function, $i) forwards;
+      animation: map-get($timing-function, $i) backwards;
       animation-name: move;
-      animation-delay: 1s;
+      animation-delay: 3s;
     }
   }
 }

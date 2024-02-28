@@ -1,3 +1,9 @@
+h1,
+h2,
+h3 {
+  margin-bottom: var(--layout-spacing-sm);
+}
+
 h2 {
   font-size: var(--step-7);
 }
@@ -13,5 +19,12 @@ h4 {
 @for $i from -2 through 7 {
   .text-#{$i} {
     font-size: var(--step-#{$i});
+  }
+}
+
+.richtext {
+  
+  img {
+    border-radius: var(--layout-border-radius-sm);
   }
 }

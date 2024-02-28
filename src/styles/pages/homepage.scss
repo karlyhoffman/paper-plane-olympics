@@ -6,15 +6,12 @@
   section {
     position: relative;
 
-    .title-card {
-      h2 {
-        margin-bottom: var(--layout-gutter-sm);
       }
     }
 
     .list {
-      &__desc h3 {
-        margin-bottom: var(--layout-spacing-sm);
+      &--featured-events {
+        padding-top: var(--layout-spacing-xl);
       }
 
       &--instructions {

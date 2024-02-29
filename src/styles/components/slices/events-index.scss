@@ -1,4 +1,46 @@
+@use "../../mixins/breakpoints" as *;
+
 .events-index {
   padding-top: var(--layout-spacing);
   padding-bottom: var(--layout-spacing);
+
+  &__list {
+    list-style-type: "";
+    padding-top: var(--layout-spacing-sm);
+
+    &__item {
+      display: flex;
+      flex-direction: column;
+      gap: var(--layout-gutter);
+      border-top: var(--layout-border);
+      padding-top: var(--layout-spacing-xs);
+      padding-inline: var(--layout-spacing-xxs);
+      padding-bottom: var(--layout-spacing-xs);
+      transition: background-color 150ms linear 0s;
+
+      @include media-breakpoint-up(md) {
+        flex-direction: row-reverse;
+
+        .column__title {
+          flex: 2;
+        }
+
+        .column__winner {
+          flex: 1;
+        }
+      }
+
+      h3 {
+        margin-bottom: var(--layout-spacing-xs);
+      }
+
+      .column__winner {
+        padding-top: 5px;
+      }
+
+      &:hover {
+        background-color: var(--color-light-gray);
+      }
+    }
+  }
 }

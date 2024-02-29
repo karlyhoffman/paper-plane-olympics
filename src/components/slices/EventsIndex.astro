@@ -1,6 +1,6 @@
 ---
 import { asText } from '@prismicio/client';
-import { Card, PrismicHtml } from '..';
+import { PrismicHtml } from '..';
 import { fetchDocumentsByType } from '../../lib/prismic/queries';
 import '../../styles/components/slices/events-index.scss';
 
@@ -9,18 +9,14 @@ const { headline, description } = Astro.props;
 const events = await fetchDocumentsByType({
   type: 'event',
   options: {
-    fetchLinks: ['plane.winner_gold'],
+    fetchLinks: ['plane.name'],
   }
 }) || [];
-
-// events.forEach((event) => {
-//   console.log(event.data);
-// });
 ---
 
 <section class="events-index container">
   {!!headline?.length && (
-    <h2 class="events-index__title text-5">
+    <h2 class="events-index__title text-4">
       {asText(headline)}
     </h2>
   )}
@@ -31,18 +27,23 @@ const events = await fetchDocumentsByType({
     </div>
   )}
 
-  <!-- {!!events.length && (
-    <ul class="events-index__list container--sm">
-      {events.map((event) => {
-        return (
-          <li>
-            <Card>
-              <h3 class="text-1" slot="title">{asText(plane?.name)}</h4>
-              <p class="text--1" slot="subtitle">Built by {pilot}</p>
-            </Card>
-          </li>
-        );
-      })}
+  {!!events.length && (
+    <ul class="events-index__list">
+      {events.map(({ uid, data: { event_name, description: desc, winner_gold } = {} }) => (
+        <li>
+          <a href={`/#${uid}`} class="events-index__list__item card">
+            <div class="column__title">
+              <h3 class="text-3">{asText(event_name)}</h4>
+              <PrismicHtml html={desc} />
+            </div>
+            <div class="column__winner">
+              <p class="text-0">
+                <strong>Winner:</strong> {asText(winner_gold.data?.name) || 'TBA'}
+              </p>
+            </div>
+          </a>
+        </li>
+      ))}
     </ul>
-  )} -->
+  )}
 </section>

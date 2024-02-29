@@ -1,13 +1,18 @@
 ---
-import { asText } from '@prismicio/client';
+import { PrismicHtml } from '..';
 import '../../styles/components/slices/hero-simple.scss';
 
 const { headline, description } = Astro.props;
 ---
 
-<section class="hero-simple container">
-  <h1 class="hero-simple__title text-5">{asText(headline)}</h1>
-  <div class="hero-simple__desc">
-    {asText(description)}
+<section class="hero-simple container--lg">
+  <div class="hero-simple__title text-5">
+    <PrismicHtml html={headline} />
   </div>
+
+  {!!description.length && (
+    <div class="hero-simple__desc">
+      <PrismicHtml html={description} />
+    </div>
+  )}
 </section>

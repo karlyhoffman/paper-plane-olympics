@@ -1,10 +1,28 @@
+@use "../../mixins/breakpoints" as *;
+
 .hero-simple {
-  text-align: center;
-  text-wrap: balance;
-  padding-top: var(--layout-spacing);
-  padding-bottom: var(--layout-spacing);
+  display: flex;
+  gap: var(--layout-gutter);
+  padding-top: var(--layout-spacing-lg);
+  padding-bottom: var(--layout-spacing-lg);
+
+  @include media-breakpoint-up(md) {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  &__title {
+    flex: 1.7;
+
+    * {
+      font-size: inherit;
+      margin-bottom: 0;
+    }
+  }
 
   &__desc {
-    padding-top: var(--layout-spacing);
+    flex: 1;
+    text-wrap: balance;
+    text-wrap: pretty;
   }
 }

@@ -6,7 +6,7 @@ import '../../styles/components/slices/text.scss';
 const { headline, text } = Astro.props;
 ---
 
-<section class="text container">
+<section class="text container--sm">
   {!!headline?.length && (
     <h2 class="text__title text-5">
       {asText(headline)}

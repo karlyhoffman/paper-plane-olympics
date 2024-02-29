@@ -1,14 +1,17 @@
 .text {
-  padding-top: var(--layout-spacing);
   padding-bottom: var(--layout-spacing);
 
   &__title {
-    text-align: center;
+    // text-align: center;
   }
 
   &__content {
-    text-align: justify;
-    padding-top: var(--layout-spacing);
+    text-wrap: balance;
+    text-wrap: pretty;
+
+    & > * + * {
+      margin-top: var(--layout-spacing-xs);
+    }
 
     img {
       display: block;

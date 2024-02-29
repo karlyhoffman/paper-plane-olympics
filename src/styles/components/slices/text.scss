@@ -1,4 +1,5 @@
 .text {
+  padding-top: var(--layout-spacing);
   padding-bottom: var(--layout-spacing);
 
   &__title {

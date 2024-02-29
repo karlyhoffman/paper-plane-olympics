@@ -7,6 +7,8 @@
     position: relative;
 
     .list {
+      list-style-type: "";
+
       &--instructions {
         text-wrap: balance;
         margin-inline: auto;

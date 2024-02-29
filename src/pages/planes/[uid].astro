@@ -31,11 +31,11 @@ const {
   pilot = {}
 } = Astro.props;
 
-const planePhoto = photo?.url ? photo : null;
+const planePhoto = !!photo?.url?.length ? photo : null;
 
 const hasPilot = !!pilot?.id?.length;
 const avatarSize = 60;
-const pilotPhoto = hasPilot && pilot?.data?.avatar?.url
+const pilotPhoto = hasPilot && !!pilot?.data?.avatar?.url?.length
   ? pilot?.data?.avatar
   : null;
 

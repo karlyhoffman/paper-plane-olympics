@@ -12,10 +12,10 @@ const {
 
 <section class={`hero-image ${bg_overlay ? 'hero-image--overlay' : ''}`}>
   <div class="hero-image__bg">
-    {background_image?.url && (
+    {!!background_image?.url?.length && (
       <Image
         src={background_image.url}
-        alt={background_image.alt}
+        alt={background_image.alt || ''}
         width={background_image.dimensions.width}
         height={background_image.dimensions.height}
         widths={[240, 540, 720, 2200]}

@@ -21,7 +21,7 @@ const currentURL = Astro.url.href;
   <meta property="og:description" content={asText(description)} />
 )}
 
-{image?.url && (
+{!!image?.url?.length && (
   <meta name="twitter:image" content={image.url} />
   <meta property="og:image" content={image.url} />
 )}

@@ -18,7 +18,7 @@ const WrapperTag = isPlaceholder || !url?.length ? 'div' : 'a';
 >
   <div class="card__content">
     <div class="card__content__image">
-      {photo?.url && (
+      {!!photo?.url?.length && (
         <Image
           class={photo.mobile?.url && 'desktop-only'}
           src={photo.url}
@@ -28,9 +28,9 @@ const WrapperTag = isPlaceholder || !url?.length ? 'div' : 'a';
         />
       )}
 
-      {photo?.mobile?.url && (
+      {!!photo?.mobile?.url?.length && (
         <Image
-          class={photo.url && 'mobile-only'}
+          class={!!photo.url?.length && 'mobile-only'}
           src={photo.mobile.url}
           alt={photo.mobile.alt || ''}
           width={photo.mobile.dimensions.width}
@@ -41,7 +41,7 @@ const WrapperTag = isPlaceholder || !url?.length ? 'div' : 'a';
 
     {title && (
       <div class="card__content__title">
-        <slot name="title" /> 
+        <slot name="title" />
       </div>
     )}
 

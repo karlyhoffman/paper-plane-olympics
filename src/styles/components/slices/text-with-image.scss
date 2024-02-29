@@ -26,6 +26,11 @@
     }
   }
 
+  &--center {
+    align-items: center;
+    text-align: center;
+  }
+
   .column {
     flex: 1 1 45%;
 

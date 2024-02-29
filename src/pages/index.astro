@@ -30,8 +30,6 @@ const {
 	featured_events = [],
 	how_headline,
 	instructions = [],
-  event_date_headline,
-	event_date,
 	results_headline,
 	results_desc
 } = data;
@@ -70,13 +68,6 @@ const eventPlanes = await fetchRelatedDocumentsByTypeAndIDs({
       />
     </section>
 	))}
-
-  <section id="date" class="container">
-		<TitleCard>
-			<PrismicHtml html={event_date_headline} />
-			<p>{event_date || 'TBD'}</p>
-		</TitleCard>
-  </section>
 
 	<div class="clouds">
 		<div class="cloud cloud--left">

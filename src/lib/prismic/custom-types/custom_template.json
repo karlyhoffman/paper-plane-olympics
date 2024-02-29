@@ -4,7 +4,7 @@
       "type": "StructuredText",
       "config": {
         "single": "heading4",
-        "label": "Display Name",
+        "label": "CMS Display Name",
         "placeholder": "Write how the page will display in the CMS here."
       }
     },
@@ -14,7 +14,9 @@
         "label": "Slug",
         "placeholder": "write-the-page-slug-here"
       }
-    },
+    }
+  },
+  "Hero": {
     "slices_hero": {
       "type": "Slices",
       "fieldset": "Slice zone",
@@ -31,7 +33,7 @@
               "headline": {
                 "type": "StructuredText",
                 "config": {
-                  "single": "heading2",
+                  "single": "heading1",
                   "label": "Headline",
                   "placeholder": "Write the headline here."
                 }
@@ -58,7 +60,7 @@
               "headline": {
                 "type": "StructuredText",
                 "config": {
-                  "single": "heading2",
+                  "single": "heading1",
                   "label": "Headline",
                   "placeholder": "Write the headline here."
                 }

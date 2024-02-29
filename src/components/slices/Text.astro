@@ -6,15 +6,17 @@ import '../../styles/components/slices/text.scss';
 const { headline, text } = Astro.props;
 ---
 
-<section class="text container--sm">
+<section class="text">
   {!!headline?.length && (
-    <h2 class="text__title text-5">
-      {asText(headline)}
-    </h2>
+    <div class="container--lg">
+      <h2 class="text__title text-4">
+        {asText(headline)}
+      </h2>
+    </div>
   )}
 
   {!!text.length && (
-    <div class="text__content richtext">
+    <div class="text__content richtext container--sm">
       <PrismicHtml html={text} />
     </div>
   )}

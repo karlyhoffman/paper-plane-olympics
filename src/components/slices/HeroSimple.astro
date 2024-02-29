@@ -3,14 +3,15 @@ import { PrismicHtml } from '..';
 import '../../styles/components/slices/hero-simple.scss';
 
 const { headline, description } = Astro.props;
+const hasText = !!description?.length;
 ---
 
 <section class="hero-simple container--lg">
-  <div class="hero-simple__title text-5">
+  <div class={`hero-simple__title ${ hasText ? "text-5" : "text-6" }`}>
     <PrismicHtml html={headline} />
   </div>
 
-  {!!description.length && (
+  {hasText && (
     <div class="hero-simple__desc">
       <PrismicHtml html={description} />
     </div>

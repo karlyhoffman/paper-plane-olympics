@@ -1,4 +1,30 @@
+@use "../../mixins/breakpoints" as *;
+
 .planes-index {
   padding-top: var(--layout-spacing);
   padding-bottom: var(--layout-spacing);
+
+  $list-gap: var(--layout-spacing-sm);
+
+  &__list {
+    list-style-type: "";
+    display: flex;
+    flex-wrap: wrap;
+    gap: $list-gap;
+    border-top: var(--layout-border);
+    margin-top: $list-gap;
+    padding-top: $list-gap;
+
+    li {
+      flex: 1 1 100%;
+
+      @include media-breakpoint-up(sm) {
+        max-width: calc((100% - $list-gap) / 2);
+      }
+
+      @include media-breakpoint-up(lg) {
+        max-width: calc((100% - ($list-gap * 2)) / 3);
+      }
+    }
+  }
 }

@@ -1,29 +1,16 @@
 ---
 import { asText } from '@prismicio/client';
 import { Card, PrismicHtml } from '..';
-import { fetchSingleDocumentByType } from '../../lib/prismic/queries';
 import '../../styles/components/slices/planes-index.scss';
 
-const { headline, description, items: planes = []} = Astro.props;
+const { headline, description, items = []} = Astro.props;
 
-// planes.forEach(({plane}) => {
-//   console.log(plane);
-// });
-
-// const planeIDs = planes.map(({ id }) => id);
-
-// const pilots = await fetchRelatedDocumentsByTypeAndIDs({
-// 	type: 'pilot',
-//   linkedType: 'plane',
-// 	ids: planeIDs,
-// }) || [];
-
-// console.log(pilots);
+const planes = items.map(({ plane }) => plane);
 ---
 
 <section class="planes-index container">
   {!!headline?.length && (
-    <h2 class="planes-index__title text-5">
+    <h2 class="planes-index__title text-4">
       {asText(headline)}
     </h2>
   )}
@@ -35,8 +22,8 @@ const { headline, description, items: planes = []} = Astro.props;
   )}
 
   {!!planes.length && (
-    <ul class="planes-index__list container--sm">
-      {planes.map(({ url, data: plane }) => {
+    <ul class="planes-index__list">
+      {planes.map(({ url = "", data: plane = {} }) => {
         const pilot = !!plane?.pilot?.data?.name?.length
           ? asText(plane.pilot.data.name)
           : 'Mystery Pilot';

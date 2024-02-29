@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import { asText } from '@prismicio/client';
 import { PrismicHtml } from '..';
 import '../../styles/components/slices/text-with-image.scss';
@@ -6,21 +7,33 @@ import '../../styles/components/slices/text-with-image.scss';
 const {
   headline,
   description,
-  align_image: alignImageRight = false,
+  align_image: isImageOnRight = false,
   image,
 } = Astro.props;
 ---
 
-<section class="text-with-image container">
-  {!!headline?.length && (
-    <h2 class="text-with-image__title text-5">
-      {asText(headline)}
-    </h2>
-  )}
-
-  {!!description.length && (
-    <div class="text-with-image__content richtext">
-      <PrismicHtml html={description} />
-    </div>
-  )}
+<section class={`text-with-image ${isImageOnRight ? '' : 'text-with-image--reverse'} container--lg`}>
+  <div class="column column__text">
+    {!!headline?.length && (
+      <h2 class="text-with-image__title text-5">
+        {asText(headline)}
+      </h2>
+    )}
+    {!!description.length && (
+      <div class="text-with-image__content richtext">
+        <PrismicHtml html={description} />
+      </div>
+    )}
+  </div>
+  <div class="column column__image">
+    {!!image.url?.length && (
+      <Image
+        src={image.url}
+        alt={image.alt || ''}
+        width={image.dimensions.width}
+        height={image.dimensions.height}
+        widths={[240, 540, 720]}
+        sizes="(max-width: 360px) 240px, (max-width: 720px) 540px"
+      />
+    )}
 </section>

@@ -10,7 +10,11 @@ const {
 } = Astro.props;
 ---
 
-<section class={`hero-image ${bg_overlay ? 'hero-image--overlay' : ''}`}>
+<section
+  class:list={['hero-image', {
+    'hero-image--overlay': bg_overlay,
+  }]}
+>
   <div class="hero-image__bg">
     {!!background_image?.url?.length && (
       <Image

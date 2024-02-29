@@ -14,7 +14,9 @@ const WrapperTag = isPlaceholder || !url?.length ? 'div' : 'a';
 
 <WrapperTag
   href={url}
-  class={`card${isPlaceholder ? ' card--placeholder' : ''}`}
+  class:list={['card', {
+    'card--placeholder': isPlaceholder,
+  }]}
 >
   <div class="card__content">
     <div class="card__content__image">

@@ -7,7 +7,12 @@ const hasText = !!description?.length;
 ---
 
 <section class="hero-simple container--lg">
-  <div class={`hero-simple__title ${ hasText ? "text-5" : "text-6" }`}>
+  <div
+    class:list={['hero-simple__title', {
+      'text-5': hasText,
+      'text-6': !hasText
+    }]}
+  >
     <PrismicHtml html={headline} />
   </div>
 

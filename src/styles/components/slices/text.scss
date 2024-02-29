@@ -15,7 +15,7 @@
 
     img {
       display: block;
-      width: 70%;
+      width: max(70%, 320px);
       height: auto;
       margin: var(--layout-spacing-sm) auto;
     }

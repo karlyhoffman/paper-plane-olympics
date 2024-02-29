@@ -2,12 +2,13 @@
 
 .hero-simple {
   display: flex;
+  flex-direction: column;
   gap: var(--layout-gutter);
   padding-top: var(--layout-spacing-lg);
   padding-bottom: var(--layout-spacing-lg);
 
   @include media-breakpoint-up(md) {
-    flex-wrap: wrap;
+    flex-direction: row;
     justify-content: center;
   }
 

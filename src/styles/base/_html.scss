@@ -43,6 +43,19 @@ a {
   }
 }
 
+.btn {
+  padding: var(--layout-spacing-xs) var(--layout-spacing-sm);
+  border: var(--layout-border);
+  border-radius: var(--layout-border-radius);
+  transition: 150ms ease-in-out;
+  transition-property: background-color, color;
+
+  &:hover {
+    background-color: var(--color-black);
+    color: var(--color-white);
+  }
+}
+
 @mixin container {
   max-width: 1000px;
   margin-inline: auto;

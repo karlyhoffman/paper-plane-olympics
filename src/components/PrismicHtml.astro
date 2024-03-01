@@ -1,6 +1,17 @@
 ---
 import { asHTML } from '@prismicio/client';
 
+// import * as prismic from '@prismicio/client'
+
+// const serializer = {
+//   paragraph: ({children}) => (
+//     return `<strong class="${node.data.label}">${children}</strong>`
+//   }
+//   return null
+// }
+
+// const contentText = prismic.asHTML(prismicDoc.data.text, { serializer });
+
 const { html } = Astro.props;
 const content = asHTML(html) || '';
 

@@ -11,26 +11,26 @@ const {
 } = Astro.props;
 ---
 
-<section class="cta container">
+<section>
   {!!featured_link?.url?.length && (
-    <a href={featured_link.url} class="cta__wrapper card">
-
-      <div class="cta__content">
-        {!!headline?.length && (
-          <h2 class="cta__title text-4">
-            {asText(headline)}
-          </h2>
-        )}
-        {!!description?.length && (
-          <div class="cta__desc">
-            <PrismicHtml html={description} />
-          </div>
-        )}
+    <a href={featured_link.url} class="cta card">
+      <div class="cta__wrapper container">
+        <div class="cta__content">
+          {!!headline?.length && (
+            <h2 class="cta__title text-4">
+              {asText(headline)}
+            </h2>
+          )}
+          {!!description?.length && (
+            <div class="cta__desc">
+              <PrismicHtml html={description} />
+            </div>
+          )}
+        </div>
+        <p class="cta__label">
+          <strong class="text-2 btn">{link_label}</strong>
+        </p>
       </div>
-
-      <p class="cta__label">
-        <strong class="text-2 btn">{link_label}</strong>
-      </p>
     </a>
   )}
 </section>

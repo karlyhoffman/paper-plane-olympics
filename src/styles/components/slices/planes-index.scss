@@ -12,8 +12,10 @@
     flex-wrap: wrap;
     gap: $list-gap;
     border-top: var(--layout-border);
+    border-bottom: var(--layout-border);
     margin-top: $list-gap;
     padding-top: $list-gap;
+    padding-bottom: $list-gap;
 
     li {
       flex: 1 1 100%;

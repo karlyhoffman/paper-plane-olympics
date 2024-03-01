@@ -2,26 +2,23 @@
 @use "../../mixins/breakpoints" as *;
 
 .cta {
+  display: block;
+  width: 100vw;
+  background-color: var(--color-black);
+  color: var(--color-white);
   padding-top: var(--layout-spacing-lg);
   padding-bottom: var(--layout-spacing-lg);
 
   &__wrapper {
     display: flex;
     flex-direction: column;
-    gap: var(--layout-gutter);
+    gap: var(--layout-spacing);
     align-items: center;
     text-align: center;
 
     @include media-breakpoint-up(md) {
+      gap: var(--layout-gutter);
       flex-direction: row;
-    }
-
-    &:hover {
-
-      .btn {
-        background-color: var(--color-black);
-        color: var(--color-white);
-      }
     }
   }
 
@@ -32,5 +29,12 @@
 
   h2 {
     margin-bottom: var(--layout-gutter);
+  }
+
+  &:hover {
+    .btn {
+      background-color: var(--color-white);
+      color: var(--color-black);
+    }
   }
 }

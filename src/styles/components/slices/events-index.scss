@@ -6,6 +6,7 @@
 
   &__list {
     list-style-type: "";
+    border-bottom: var(--layout-border);
     padding-top: var(--layout-spacing-sm);
 
     &__item {
@@ -15,7 +16,7 @@
       border-top: var(--layout-border);
       padding-top: var(--layout-spacing-xs);
       padding-inline: var(--layout-spacing-xxs);
-      padding-bottom: var(--layout-spacing-xs);
+      padding-bottom: calc(var(--layout-spacing-xs) * 2);
       transition: background-color 150ms linear 0s;
 
       @include media-breakpoint-up(md) {

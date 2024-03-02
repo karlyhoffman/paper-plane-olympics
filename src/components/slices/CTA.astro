@@ -12,21 +12,25 @@ const {
 ---
 
 {!!featured_link?.url?.length && (
-  <section class="cta container">
-    <div class="cta__content">
-      {!!headline?.length && (
-        <h2 class="cta__title text-5">
-          {asText(headline)}
-        </h2>
-      )}
+  <section class="cta">
+    {!!headline?.length && (
+      <h2 class="cta__title text-5 container">
+        {asText(headline)}
+      </h2>
+    )}
+
+    <div class="container--sm">
       {!!description?.length && (
-        <div class="cta__desc">
+        <div class="cta__desc richtext">
           <PrismicHtml html={description} />
         </div>
       )}
-    </div>
-    <div class="cta__link">
-      <a href={featured_link.url} target={featured_link.target} class="card">
+
+      <a
+        class="card"
+        href={featured_link.url}
+        target={featured_link.target}
+      >
         <strong class="text-2 btn">{link_label}</strong>
       </a>
     </div>

@@ -173,6 +173,15 @@
                   "thumbnails": [],
                   "label": "Image"
                 }
+              },
+              "include_shadow": {
+                "type": "Boolean",
+                "config": {
+                  "placeholder_false": "Hide",
+                  "placeholder_true": "Show",
+                  "default_value": false,
+                  "label": "Shadow Outline"
+                }
               }
             },
             "repeat": {}

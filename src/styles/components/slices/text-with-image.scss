@@ -41,23 +41,32 @@
       align-items: center;
       text-wrap: balance;
 
-      @include media-breakpoint-up(lg) {
-        padding-right: var(--layout-spacing-sm);
-      }
-
-      h2 {
+      &__title {
         display: block;
         width: 100%;
       }
 
-      .Highlight {
-        color: var(--highlight-color);
+      &__desc {
+
+        &:not(.desc--center) {
+          @include media-breakpoint-up(lg) {
+            padding-right: var(--layout-spacing-sm);
+          }
+        }
+
+        .Highlight {
+          color: var(--highlight-color);
+        }
       }
     }
 
     &__image {
       border-radius: var(--layout-border-radius);
       overflow: clip;
+
+      &--shadow {
+        box-shadow: var(--layout-box-shadow);
+      }
 
       img {
         width: 100%;

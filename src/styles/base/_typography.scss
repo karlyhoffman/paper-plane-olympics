@@ -52,4 +52,12 @@ h4 {
   img {
     border-radius: var(--layout-border-radius-sm);
   }
+
+  a {
+    text-decoration: underline;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
 }

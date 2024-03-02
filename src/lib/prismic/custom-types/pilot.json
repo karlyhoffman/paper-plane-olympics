@@ -5,7 +5,7 @@
       "config": {
         "single": "heading2",
         "label": "Name",
-        "placeholder": "First Lastname"
+        "placeholder": "Write your name here."
       }
     },
     "avatar": {
@@ -17,15 +17,6 @@
         },
         "thumbnails": [],
         "label": "Avatar"
-      }
-    },
-    "about_blurb": {
-      "type": "StructuredText",
-      "config": {
-        "multi": "paragraph,strong,em,hyperlink,list-item,o-list-item",
-        "allowTargetBlank": true,
-        "label": "About Blurb",
-        "placeholder": "Likes long walks on the beach when not flying paper planes..."
       }
     }
   }

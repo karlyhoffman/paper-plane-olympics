@@ -3,8 +3,8 @@
 .hero-simple {
   display: flex;
   flex-direction: column;
-  gap: var(--layout-gutter);
-  padding-top: var(--layout-spacing-xl);
+  gap: var(--layout-spacing-lg);
+  padding-top: var(--layout-spacing-lg);
   padding-bottom: var(--layout-spacing);
 
   @include media-breakpoint-up(md) {
@@ -24,6 +24,6 @@
   &__desc {
     flex: 1;
     text-wrap: balance;
-    text-wrap: pretty;
+    padding-top: 5px;
   }
 }

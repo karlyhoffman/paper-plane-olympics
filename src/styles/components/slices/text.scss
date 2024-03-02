@@ -8,7 +8,6 @@
 
   &__content {
     text-wrap: balance;
-    text-wrap: pretty;
 
     & > * + * {
       margin-top: var(--layout-spacing-xs);

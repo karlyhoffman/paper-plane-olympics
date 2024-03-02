@@ -40,10 +40,14 @@
       justify-content: center;
       align-items: center;
       text-wrap: balance;
-      text-wrap: pretty;
 
       @include media-breakpoint-up(lg) {
-        padding-right: var(--layout-spacing);
+        padding-right: var(--layout-spacing-sm);
+      }
+
+      h2 {
+        display: block;
+        width: 100%;
       }
     }
 

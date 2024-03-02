@@ -22,14 +22,14 @@ const hasImage = !!image.url?.length;
 >
   <div class="column column__text">
     {!!headline?.length && (
-      <h2 class:list={['text-with-image__title', 'text-4', {
+      <h2 class:list={['text-4', {
         'container--sm': !hasImage,
       }]}>
         {asText(headline)}
       </h2>
     )}
     {!!description.length && (
-      <div class="text-with-image__content richtext">
+      <div class="richtext">
         <PrismicHtml html={description} />
       </div>
     )}

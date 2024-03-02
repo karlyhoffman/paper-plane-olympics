@@ -29,6 +29,8 @@
   &--center {
     align-items: center;
     text-align: center;
+    padding-top: var(--layout-spacing-lg);
+    padding-bottom: var(--layout-spacing-lg);
   }
 
   .column {

@@ -17,7 +17,7 @@ const hasText = !!description?.length;
   </div>
 
   {hasText && (
-    <div class="hero-simple__desc">
+    <div class="hero-simple__desc richtext">
       <PrismicHtml html={description} />
     </div>
   )}

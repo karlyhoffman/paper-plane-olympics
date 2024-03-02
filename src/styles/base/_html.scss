@@ -44,6 +44,7 @@ a {
 }
 
 .btn {
+  display: inline-block;
   padding: var(--layout-spacing-xs) var(--layout-spacing-sm);
   border: var(--layout-border);
   border-radius: var(--layout-border-radius);

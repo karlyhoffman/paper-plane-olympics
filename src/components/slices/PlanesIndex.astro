@@ -16,7 +16,7 @@ const planes = items.map(({ plane }) => plane);
   )}
 
   {!!description?.length && (
-    <div class="planes-index__content">
+    <div class="planes-index__content richtext">
       <PrismicHtml html={description} />
     </div>
   )}

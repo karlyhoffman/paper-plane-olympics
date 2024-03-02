@@ -22,7 +22,7 @@ const events = await fetchDocumentsByType({
   )}
 
   {!!description?.length && (
-    <div class="events-index__content">
+    <div class="events-index__content richtext">
       <PrismicHtml html={description} />
     </div>
   )}

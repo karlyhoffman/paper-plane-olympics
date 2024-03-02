@@ -49,6 +49,10 @@
         display: block;
         width: 100%;
       }
+
+      .Highlight {
+        color: var(--highlight-color);
+      }
     }
 
     &__image {

@@ -144,7 +144,14 @@
                   "multi": "paragraph,strong,em,hyperlink,list-item,o-list-item",
                   "allowTargetBlank": true,
                   "label": "Description",
+                  "labels": ["Highlight"],
                   "placeholder": "This text will appear below the headline."
+                }
+              },
+              "highlight_color": {
+                "type": "Color",
+                "config": {
+                  "label": "Highlight Color"
                 }
               },
               "align_image": {

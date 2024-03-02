@@ -7,6 +7,7 @@ import '../../styles/components/slices/text-with-image.scss';
 const {
   headline,
   description,
+  highlight_color,
   align_image: isImageOnRight = false,
   image,
 } = Astro.props;
@@ -48,3 +49,7 @@ const hasImage = !!image.url?.length;
     </div>
   )}
 </section>
+
+<style define:vars={{
+  'highlight-color': highlight_color || 'var(--accent-color)'
+}}></style>

@@ -43,7 +43,12 @@ a {
   }
 }
 
+button {
+  cursor: pointer;
+}
+
 .btn {
+  cursor: pointer;
   display: inline-block;
   padding: var(--layout-spacing-xs) var(--layout-spacing-sm);
   border: var(--layout-border);
@@ -54,6 +59,11 @@ a {
   &:hover {
     background-color: var(--color-black);
     color: var(--color-white);
+  }
+
+  &--sm {
+    padding-top: var(--layout-gutter-sm);
+    padding-bottom: var(--layout-gutter-sm);
   }
 }
 

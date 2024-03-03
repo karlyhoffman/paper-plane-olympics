@@ -23,7 +23,10 @@ const planes = items.map(({ plane }) => plane);
 
   {!!planes.length && (
     <ul class="planes-index__list">
-      {planes.map(({ url = "", data: plane = {} }) => {
+      {planes.map(({
+        url = "", 
+        data: plane
+      }) => {
         const pilot = !!plane?.pilot?.data?.name?.length
           ? asText(plane.pilot.data.name)
           : 'Mystery Pilot';

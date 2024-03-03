@@ -2,13 +2,16 @@
 
 .text-with-image {
   display: flex;
-  flex-direction: column-reverse;
-  gap: var(--layout-gutter);
+  flex-direction: column;
+  gap: var(--layout-spacing-sm);
+  text-align: center;
   padding-top: var(--layout-spacing);
   padding-bottom: var(--layout-spacing);
 
   @include media-breakpoint-up(md) {
     flex-direction: row;
+    gap: var(--layout-gutter);
+    text-align: left;
   }
 
   &--reverse {

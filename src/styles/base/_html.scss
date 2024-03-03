@@ -70,11 +70,7 @@ button {
 @mixin container {
   max-width: 1000px;
   margin-inline: auto;
-  padding-inline: var(--layout-gutter-sm);
-
-  @include media-breakpoint-up(md) {
-    padding-inline: var(--layout-gutter);
-  }
+  padding-inline: var(--layout-gutter);
 }
 
 .container {

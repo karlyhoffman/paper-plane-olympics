@@ -1,6 +1,8 @@
 @use "../mixins/breakpoints" as *;
 
-header {
+$transition-timing: 300ms cubic-bezier(0.455, 0.030, 0.515, 0.955) 0s;
+
+#nav-menu {
   position: fixed;
   top: 0;
   left: 0;
@@ -13,26 +15,119 @@ header {
   }
 
   .navbar {
-
+    position: relative;
+    z-index: 2;
+    
     &__logo {
+      position: relative;
       display: block;
       width: 140px;
-      width: min(25vw, 140px);
+      width: 80px;
       height: auto;
+      background: none;
+      border:  none;
+      z-index: 2;
 
       transform-origin: center;
+      transform: scale(0.55) translate(-25%, -25%);
       transition: transform 150ms ease-in-out 0s;
-      transform: scale(0.55) translate(-50%, -50%);
+
+      @include media-breakpoint-up(md) {
+        transform: scale(0.55) translate(-50%, -50%);
+      }
 
       img {
         width: 100%;
         height: auto;
         transform-origin: center;
-        transform: scaleX(-1) rotate(60deg);
+        transform: scaleX(-1) rotate(55deg);
       }
 
       &:hover {
-        transform: scale(0.6) translate(-45%, -45%);
+        transform: scale(0.6) translate(-22%, -22%);
+
+        @include media-breakpoint-up(md) {
+          transform: scale(0.6) translate(-45%, -45%);
+        }
+      }
+    }
+
+    &__menu {
+      list-style-type: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      gap: var(--layout-gutter-sm);
+      background-color: var(--color-white);
+      padding: var(--layout-gutter);
+      z-index: 1;
+
+      transform: translateX(-100%);
+      transition: transform $transition-timing;
+
+      @include media-breakpoint-up(md) {
+        right: auto;
+      }
+
+      a {
+        padding-right: 5px;
+      }
+    }
+
+    &__close-btn {
+      position: fixed;
+      top: var(--layout-gutter-sm);
+      right: var(--layout-gutter-sm);
+      background-color: var(--color-white);
+      z-index: 2;
+
+      opacity: 0;
+      transition: opacity $transition-timing;
+
+      @include media-breakpoint-up(md) {
+        top: var(--layout-gutter);
+        right: var(--layout-gutter);
+      }
+
+      &:hover {
+        background-color: var(--color-black);
+      }
+    }
+
+    &__overlay {
+      pointer-events: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: var(--color-black);
+      z-index: -1;
+
+      opacity: 0;
+      transition: opacity $transition-timing;
+    }
+  }
+
+  &.is-open {
+
+    .navbar {
+      &__menu {
+        transform: translateX(0%);
+      }
+
+      &__overlay {
+        pointer-events: auto;
+        opacity: 0.5;
+      }
+
+      &__close-btn {
+        opacity: 1;
       }
     }
   }

@@ -5,7 +5,7 @@ import { Footer, Navbar, SEO } from '../components';
 import '../styles/global.scss';
 
 const { data: pageData } = await fetchSingleDocumentByType({ type: 'global_settings' }) || {};
-const { data: footerData } = await fetchSingleDocumentByType({ type: 'global_navigation' }) || {};
+const { data: navData } = await fetchSingleDocumentByType({ type: 'global_navigation' }) || {};
 
 const { title, seoImage, seoDesc, id, class: className } = Astro.props;
 
@@ -25,7 +25,7 @@ const {
 	} = {}
 } = pageData;
 
-const { footer_desc: footerDesc } = footerData;
+const { nav_items: navItems = [], footer_desc: footerDesc } = navData;
 
 const seoTitle = title
 	? `${title} | Paper Plane Olympics`
@@ -50,7 +50,7 @@ const seoTitle = title
 	</head>
 	<body>
 		<SpeedInsights />
-		<Navbar />
+		<Navbar menuItems={navItems} />
 		<main id={id} class={className}>
 			<slot />
 		</main>

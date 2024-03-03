@@ -3,20 +3,101 @@ import { Image } from 'astro:assets';
 import plane from '../../public/images/plane.svg';
 import '../styles/components/navbar.scss';
 
+const { menuItems = [] } = Astro.props;
 const isHomepage = Astro.url.pathname === '/';
 ---
 
 {!isHomepage && (
-  <header>
-    <nav class="navbar">
-      <a href="/" class="navbar__logo">
-        <Image
-          src={plane}
-          width={452}
-          height={175}
-          alt="a cloud graphic"
-        />
-      </a>
-    </nav>
-  </header>
+  <nav-menu id="nav-menu">
+    <header>
+      <nav class="navbar">
+        <button type="button" class="navbar__logo">
+          <Image
+            src={plane}
+            width={452}
+            height={175}
+            alt="a cloud graphic"
+          />
+        </button>
+
+        {!!menuItems.length && (
+          <ul class="navbar__menu">
+            {menuItems.map(({
+              label = "",
+              link: { url, target }
+            }) => {
+              if (!label.length || !url?.length) return null;
+
+              return (
+                <li class="navbar__menu-item">
+                  <a href={url} target={target} class="text-4">
+                    {label}
+                  </a>
+                </li>
+              )
+            })}    
+          </ul>
+          <button
+            class="navbar__close-btn btn btn--sm btn--close"
+            type="button"
+          >
+            <strong class="text-1">Close</strong>
+          </button>
+        )}
+      </nav>
+    </header>
+
+    {!!menuItems.length && (
+      <button
+        class="navbar__overlay btn--close"
+        type="button"
+      >
+        <span class="sr-only">Close</span>
+      </button>
+    )}
+  </nav-menu>
 )}
+
+<script>
+  class NavMenu extends HTMLElement {
+    element: any;
+    toggleTrigger: any;
+    closeTriggers: any[];
+    isOpen: boolean;
+
+    constructor() {
+      super();
+      this.element = this;
+      this.toggleTrigger = this.element.querySelector('.navbar__logo') || null;
+      this.closeTriggers = [...this.element.querySelectorAll('.btn--close')] || [];
+      this.isOpen = false;
+    }
+
+    connectedCallback() {
+      this.enable();
+    }
+
+    enable() {
+      this.toggleTrigger.addEventListener('click', this.toggleMenu);
+      this.closeTriggers.forEach((trigger) => {
+        trigger.addEventListener('click', this.closeMenu);
+      });
+    }
+
+    toggleMenu = () => {
+      this.isOpen = !this.isOpen;
+      this.element.classList.toggle('is-open');
+
+      document.body.style.overflow = this.isOpen
+        ? 'hidden'
+        : 'auto';
+    }
+
+    closeMenu = () => {
+      this.isOpen = false;
+      this.element.classList.remove('is-open');
+    }
+  }
+
+  customElements.define('nav-menu', NavMenu);
+</script>

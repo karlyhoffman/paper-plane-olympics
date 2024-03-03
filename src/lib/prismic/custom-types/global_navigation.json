@@ -1,5 +1,29 @@
 {
-  "Nav Menu": {},
+  "Nav Menu": {
+    "nav_items": {
+      "type": "Group",
+      "config": {
+        "fields": {
+          "label": {
+            "type": "Text",
+            "config": {
+              "label": "Label",
+              "placeholder": "Write the nav item label here"
+            }
+          },
+          "link": {
+            "type": "Link",
+            "config": {
+              "allowTargetBlank": true,
+              "label": "Link",
+              "select": null
+            }
+          }
+        },
+        "label": "Nav Items"
+      }
+    }
+  },
   "Footer": {
     "footer_desc": {
       "type": "StructuredText",
@@ -7,6 +31,7 @@
         "single": "paragraph,strong,em,hyperlink",
         "allowTargetBlank": true,
         "label": "Short Description",
+        "labels": ["Small"],
         "placeholder": "Write a short footer blurb here."
       }
     }

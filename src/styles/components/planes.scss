@@ -9,6 +9,10 @@
   width: 122px;
   height: 112px;
 
+  img {
+    width: min(10vw, 122px);
+  }
+
   @for $i from 1 through 12 {
     &--#{$i}-oclock {
       offset-path: map-get($flight-paths, $i);
@@ -19,6 +23,8 @@
       animation: map-get($timing-function, $i) backwards;
       animation-name: move;
       animation-delay: 3s;
+
+      // animation-play-state: paused;
     }
   }
 }

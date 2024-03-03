@@ -1,0 +1,56 @@
+---
+import { Image } from 'astro:assets';
+import plane from '../../public/images/plane.svg';
+import '../styles/components/planes.scss';
+
+const { number } = Astro.props;
+---
+
+<plane-animation class={`plane plane--${number}-oclock`}>
+  <Image
+    src={plane}
+    width={122}
+    height={112}
+    alt="a paper plane graphic"
+  />
+</plane-animation>
+
+<script>
+  class PlaneAnimation extends HTMLElement {
+    element: HTMLElement;
+
+    constructor() {
+      super();
+      this.element = this;
+    }
+
+    connectedCallback() {
+      this.enable();
+    }
+
+    enable() {
+
+      console.log(this.element);
+
+      // this.initAnimationTriggers();
+    }
+
+    initAnimationTriggers() {
+      
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.map((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('loaded')
+            observer.unobserve(entry.target);
+          }
+        });
+      });
+
+      images.forEach(image => observer.observe(image));
+
+    }
+  }
+
+  customElements.define('plane-animation', PlaneAnimation);
+</script>

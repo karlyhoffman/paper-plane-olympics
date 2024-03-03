@@ -1,8 +1,9 @@
 ---
-import { Planes, PrismicHtml } from '.';
+import { Plane, PrismicHtml } from '.';
 import '../styles/components/title-card.scss';
 
 const { text, animation = 'None' } = Astro.props;
+const showPlaneNumbers = [12, 1, 2, 4, 7, 9, 11];
 ---
 
 <div class="title-card">
@@ -14,6 +15,8 @@ const { text, animation = 'None' } = Astro.props;
 
 {animation === 'Planes' && (
   <div class="title-card__planes">
-    <Planes showPlaneNumbers={[12, 1, 2, 4, 7, 9, 11]} />
+    {showPlaneNumbers.map((number) => (
+      <Plane number={number} />
+    ))}
   </div>
 )}

@@ -29,26 +29,21 @@ const { number } = Astro.props;
     }
 
     enable() {
-
-      console.log(this.element);
-
-      // this.initAnimationTriggers();
+      this.observe();
     }
 
-    initAnimationTriggers() {
-      
-
+    observe() {
       const observer = new IntersectionObserver((entries) => {
         entries.map((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('loaded')
-            observer.unobserve(entry.target);
+            entry.target.classList.add('animate')
+          } else {
+            entry.target.classList.remove('animate')
           }
         });
       });
 
-      images.forEach(image => observer.observe(image));
-
+      observer.observe(this.element);
     }
   }
 

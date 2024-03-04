@@ -21,7 +21,6 @@ $transition-timing: 300ms cubic-bezier(0.455, 0.030, 0.515, 0.955) 0s;
     &__logo {
       position: relative;
       display: block;
-      width: 140px;
       width: 80px;
       height: auto;
       background: none;
@@ -41,7 +40,20 @@ $transition-timing: 300ms cubic-bezier(0.455, 0.030, 0.515, 0.955) 0s;
         height: auto;
         transform-origin: center;
         transform: scaleX(-1) rotate(55deg);
-      }
+
+        --my-x: 112;
+        --my-y: 80;
+
+        /* Position the box inside its parent */
+        position: absolute;
+
+        /* Rotate so that the box faces the mouse position */
+        /* For this, take the box its own position and size (25 = half the width) into account */
+        rotate: atan2(
+                  calc((var(--mouse-x) - var(--my-x) - 25) * -1),
+                  calc((var(--mouse-y) - var(--my-y) - 25) * -1)
+                );
+            }
 
       &:hover {
         transform: scale(0.6) translate(-22%, -22%);

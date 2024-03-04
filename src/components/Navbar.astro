@@ -82,6 +82,14 @@ const isHomepage = Astro.url.pathname === '/';
       this.closeTriggers.forEach((trigger) => {
         trigger.addEventListener('click', this.closeMenu);
       });
+
+      window.addEventListener("pointermove", (evt) => {
+        let x = evt.offsetX;
+        let y = evt.offsetY;
+
+        this.element.style.setProperty("--mouse-x", Math.round(x));
+        this.element.style.setProperty("--mouse-y", Math.round(y));
+      })
     }
 
     toggleMenu = () => {

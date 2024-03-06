@@ -33,12 +33,16 @@ const { number } = Astro.props;
     }
 
     observe() {
+      // https://stackoverflow.com/questions/71553185/problem-with-using-intersectionobserver-to-trigger-css-animation
+
+      // https://codepen.io/danwilson/pen/bwdmYo/
+
       const observer = new IntersectionObserver((entries) => {
         entries.map((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('animate')
+            entry.target.classList.add('animate');
           } else {
-            entry.target.classList.remove('animate')
+            entry.target.classList.remove('animate');
           }
         });
       });
